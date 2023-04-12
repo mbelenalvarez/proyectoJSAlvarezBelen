@@ -29,3 +29,5 @@ let numeroPaciente = parseInt(prompt("¿Cuál es el número de turno de " + nomb
       console.log("Tenes una espera mayor a 30 minutos");
     }
   }
+
+  
