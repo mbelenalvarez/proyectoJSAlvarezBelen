@@ -1,0 +1,449 @@
+header a:hover,
+.mainIndex .menuBoton:hover {
+  transform: scale(1.2rem);
+}
+
+.cards .btn,
+.cardServicio .btn {
+  background-color: #88ada4;
+  color: beige;
+  list-style: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.77);
+  justify-content: center;
+}
+
+.cards .card1,
+.cards .card2,
+.cards .card3,
+.cards .card4,
+.cards .card5,
+.cards .card6,
+.cardServicio .cardS1,
+.cardServicio .cardS2,
+.cardServicio .cardS3 {
+  width: 15rem;
+  font-size: 1rem;
+}
+
+.service ul li,
+.cards,
+.cardServicio {
+  -webkit-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.menuTextoInterno {
+  -webkit-animation-name: zoomIn;
+  animation-name: zoomIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  list-style: none;
+}
+
+/* nesting */
+/* menu principal */
+header {
+  background-color: #fdebde;
+  font-weight: bold;
+}
+header .imagenMenu {
+  width: 5rem;
+  height: 3rem;
+  padding-left: 1.8rem;
+}
+header .colorTexto {
+  color: #88ada4;
+  text-decoration: none;
+}
+header nav ul li a {
+  font-size: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+header a:hover {
+  color: beige;
+  text-decoration: none;
+}
+
+/* Index */
+.mainIndex {
+  text-decoration: none;
+  background-image: url(../multimedia/fondo.jpg);
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr;
+  grid-template-areas: "menuTextoInterno menuTextoInterno menuTextoInterno" "menuBoton menuBoton menuBoton";
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+.mainIndex .menuTextoInterno {
+  color: rgba(0, 0, 0, 0.77);
+  grid-area: menuTextoInterno;
+}
+.mainIndex .menuBoton {
+  background-color: #88ada4;
+  color: beige;
+  font-size: 1.2rem;
+  border-radius: 1.5rem;
+  grid-area: menuBoton;
+  text-decoration: none;
+}
+.mainIndex .menuBoton:hover {
+  box-shadow: rgba(0, 0, 0, 0.77) 2px 2px;
+}
+.mainIndex div a {
+  color: beige;
+  text-decoration: none;
+}
+
+.textoMenu {
+  background-color: #fdebde;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 0.5fr;
+  grid-template-areas: "principal principal ." ". secundario terciario";
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  padding: 0.2rem;
+}
+.textoMenu .principal {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-style: italic;
+  padding: 1rem;
+  grid-area: principal;
+}
+.textoMenu .secundario {
+  font-size: 1rem;
+  padding: 1rem;
+  grid-area: secundario;
+}
+.textoMenu .terciario {
+  font-size: 1rem;
+  padding: 1rem;
+  grid-area: terciario;
+}
+
+.service {
+  background-color: beige;
+}
+.service h2 {
+  color: crimson;
+  text-align: start;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+.service ul li {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr;
+  grid-template-areas: "s1 p" "s2 p" "s3 p";
+  padding: 0.2rem;
+  text-align: start;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-left: 1rem;
+}
+.service ul li p {
+  font-weight: normal;
+  padding-right: 1rem;
+  color: #88ada4;
+  grid-area: p;
+}
+.service ul li .servicio-uno {
+  grid-area: s1;
+}
+.service ul li .servicio-dos {
+  grid-area: s2;
+}
+.service ul li .servicio-tres {
+  grid-area: s3;
+}
+
+/* footer titulos */
+footer {
+  background-color: #88ada4;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 0.5rem;
+}
+footer .misDatos {
+  padding: 1.5rem;
+}
+footer div h4 {
+  color: crimson;
+  font-size: 1.3rem;
+}
+footer div h3 {
+  font-size: 1rem;
+}
+footer div ul li a {
+  color: crimson;
+  text-decoration: none;
+  margin-top: 1rem;
+}
+
+.titulos {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-weight: bold;
+  font-style: italic;
+  color: crimson;
+}
+
+/* contacto */
+form fieldset {
+  background-color: #fdebde;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+form fieldset legend {
+  background-color: #88ada4;
+  font-weight: bold;
+}
+form fieldset .input {
+  grid-area: enviar;
+}
+form fieldset button,
+form fieldset input,
+form fieldset select,
+form fieldset textarea {
+  background-color: #88ada4;
+  font-size: 80%;
+  border-radius: 0.3rem;
+  margin: 0.3rem;
+  padding: 0.3rem;
+  font-weight: bold;
+  border-style: bold;
+}
+
+.formContacto {
+  display: flex;
+  justify-content: space-evenly;
+}
+.formContacto .imagenContacto {
+  width: 30%;
+}
+
+/* mis trabajos */
+.cards {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1.5fr;
+  grid-template-areas: "card1 card2 card3" "card4 card5 card6";
+  justify-content: space-around;
+  align-items: center;
+  justify-items: center;
+}
+.cards .card1 {
+  grid-area: card1;
+  padding: 1rem;
+}
+.cards .card2 {
+  grid-area: card2;
+  padding: 1rem;
+}
+.cards .card3 {
+  grid-area: card3;
+  padding: 1rem;
+}
+.cards .card4 {
+  grid-area: card4;
+  padding: 1rem;
+}
+.cards .card5 {
+  grid-area: card5;
+  padding: 1rem;
+}
+.cards .card6 {
+  grid-area: card6;
+  padding: 1rem;
+}
+
+/* Servicios */
+.cardServicio {
+  display: flex;
+  justify-content: space-evenly;
+}
+.cardServicio .cardS1 {
+  padding: 1rem;
+}
+.cardServicio .cardS2 {
+  padding: 1rem;
+}
+.cardServicio .cardS3 {
+  padding: 1rem;
+}
+
+/* media querie */
+@media only screen and (min-width: 601px) and (max-width: 1000px) {
+  header .imagenMenu {
+    height: 30%;
+  }
+  .mainIndex {
+    filter: brightness(75%);
+  }
+  .mainIndex .menuTextoInterno {
+    color: crimson;
+    text-shadow: 2px 2px beige;
+  }
+  .mainQuienSoy .video iframe {
+    width: 15rem;
+    height: 10rem;
+  }
+  .mainQuienSoy .imagenBelen img {
+    width: 15rem;
+    height: 10rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mainIndex {
+    filter: brightness(75%);
+  }
+  .mainIndex .menuTextoInterno {
+    margin-top: 1rem;
+    color: crimson;
+    text-shadow: 2px 2px beige;
+  }
+  .mainIndex .menuBoton {
+    margin-bottom: 2rem;
+  }
+  .textoMenu {
+    grid-template-columns: 0.5fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-areas: ". principal principal" ". secundario terciario";
+    font-size: 0.7rem;
+  }
+  .service {
+    font-size: 1.2rem;
+  }
+  .service ul li {
+    display: flex;
+    text-align: center;
+    font-size: 1rem;
+    justify-content: space-around;
+    padding: 0.1rem;
+  }
+  header .imagenMenu {
+    height: 30%;
+  }
+  .formContacto img {
+    display: none;
+  }
+  .cardServicio {
+    display: grid;
+    grid-template-columns: 4rem;
+    grid-template-rows: 22rem;
+    grid-template-areas: "cardS1 cardS1" "cardS2 cardS2" "cardS3 cardS3";
+    justify-content: center;
+  }
+  .cardServicio .cardS1 {
+    grid-area: cardS1;
+  }
+  .cardServicio .cardS2 {
+    grid-area: cardS2;
+  }
+  .cardServicio .cardS3 {
+    grid-area: cardS3;
+  }
+  .cards {
+    display: grid;
+    grid-template-columns: 9fr;
+    grid-template-rows: 26fr;
+    grid-template-areas: "card1 card1" "card2 card2" "card3 card3" "card4 card4" "card5 card5" "card6 card6";
+    justify-content: center;
+  }
+  .cards .card1 {
+    grid-area: card1;
+  }
+  .cards .card2 {
+    grid-area: card2;
+  }
+  .cards .card3 {
+    grid-area: card3;
+  }
+  .cards .card4 {
+    grid-area: card4;
+  }
+  .cards .card5 {
+    grid-area: card5;
+  }
+  .cards .card6 {
+    grid-area: card6;
+  }
+  .menuFooter {
+    margin-right: 2rem;
+  }
+}

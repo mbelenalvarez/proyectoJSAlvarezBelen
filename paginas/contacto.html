@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contacto de la pagina" />
+    <meta name="keywords" content="HTML, CSS, contacto, form, JS" />
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <!-- Link css -->
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <!-- Link letra -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Contacto</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html"
+            ><img class="imagenMenu" src="../multimedia/logo.jpg" alt="logo"
+          /></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse row" id="navbarNav">
+            <ul class="navbar-nav row justify-content-end">
+              <li class="nav-item col-auto">
+                <a
+                  class="nav-link colorTexto"
+                  aria-current="page"
+                  href="../index.html"
+                >
+                  Inicio
+                </a>
+              </li>
+              <li class="nav-item col-auto">
+                <a class="nav-link colorTexto" href="misTrabajos.html">
+                  Mis trabajos
+                </a>
+              </li>
+              <li class="nav-item col-auto">
+                <a class="nav-link colorTexto" href="quienSoy.html">
+                  Quien soy
+                </a>
+              </li>
+              <li class="nav-item col-auto">
+                <a class="nav-link colorTexto" href="servicios.html">
+                  Servicios
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Titulo -->
+    <div class="titulos">
+      <h1>Contacto</h1>
+    </div>
+
+    <!-- Formulario -->
+    <div class="formContacto">
+      <img
+        class="imagenContacto"
+        src="../multimedia/imagenContacto.jpg"
+        alt="Contacto"
+      />
+      <form action="">
+        <fieldset>
+          <legend>¡Conozcámonos!</legend>
+          <div class="nombre">
+            <label for="nombre"> Completá tu nombre </label>
+            <input type="text" name="nombre" />
+          </div>
+
+          <div class="mail">
+            <label for="mail"> Completá tu mail </label>
+            <input type="text" name="mail" id="" />
+          </div>
+
+          <div class="numero">
+            <label for="numero"> Completá tu número de contacto </label>
+            <input type="text" name="numero" />
+          </div>
+
+          <div class="mensaje">
+            <label for="mensaje"> Envía tu mensaje </label>
+            <input type="text" name="mensaje" />
+          </div>
+
+          <div class="input">
+            <input type="submit" />
+          </div>
+        </fieldset>
+      </form>
+      |
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="misDatos">
+        <h4>Belen Alvarez</h4>
+        <h3>Celular: +549123456789</h3>
+        <h3>Dirección: Mar del Plata, Argentina</h3>
+      </div>
+      <div class="menuFooter">
+        <ul>
+          <li>
+            <a href="../index.html"> Inicio </a>
+          </li>
+          <li>
+            <a href="/paginas/misTrabajos.html"> Mis Trabajos</a>
+          </li>
+          <li>
+            <a href="/paginas/quienSoy.html"> Quien soy </a>
+          </li>
+          <li>
+            <a href="/paginas/servicios.html"> Servicios </a>
+          </li>
+          <li>
+            <a href="/paginas/contacto.html"> Contacto </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

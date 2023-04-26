@@ -1,0 +1,106 @@
+@media only screen and (min-width:601px) and (max-width:1000px) {
+    header .imagenMenu {
+        height: 30%;
+    }
+    .mainIndex {
+        filter: brightness(75%);
+        .menuTextoInterno {
+            color: crimson;
+            text-shadow: 2px 2px beige;
+        }
+    }
+}
+
+@media screen and (max-width:600px) {    
+    .mainIndex {
+        filter: brightness(75%);
+        .menuTextoInterno {
+            margin-top: 1rem;
+            color: crimson;
+            text-shadow: 2px 2px beige;
+        }
+        .menuBoton {
+            margin-bottom: 2rem;
+        }
+    }
+    .textoMenu {
+        grid-template-columns: 0.5fr;
+        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-areas: ". principal principal"
+                            ". secundario terciario";
+        font-size: 0.7rem;
+    }
+    .service {
+        font-size: 1.2rem;
+        ul li {
+            display: flex;
+            text-align: center;
+            font-size: 1rem;
+            justify-content: space-around;
+            padding: 0.1rem;
+        }
+    }
+    header .imagenMenu {
+        height: 30%;
+    }
+
+    .formContacto img {
+    display: none;
+    }
+
+
+    .cardServicio {
+        display: grid;
+        grid-template-columns: 4rem;
+        grid-template-rows: 22rem;
+        grid-template-areas: "cardS1 cardS1" 
+                            "cardS2 cardS2"
+                            "cardS3 cardS3";
+        justify-content: center;
+        .cardS1 {
+        grid-area: cardS1;
+        }
+        .cardS2 {
+        grid-area: cardS2;
+        }
+        .cardS3 {
+        grid-area: cardS3;
+        }
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: 9fr;
+        grid-template-rows: 26fr;
+        grid-template-areas: "card1 card1" 
+                            "card2 card2"
+                            "card3 card3"
+                            "card4 card4"
+                            "card5 card5"
+                            "card6 card6";
+        justify-content: center;
+        .card1 {
+        grid-area: card1;
+        }
+        .card2 {
+        grid-area: card2;
+        }
+        .card3 {
+        grid-area: card3;
+        }
+        .card4 {
+        grid-area: card4;
+        }
+        .card5 {
+        grid-area: card5;
+        }
+        .card6 {
+        grid-area: card6;
+        }
+    }
+    
+    .menuFooter {
+        margin-right: 2rem;
+        
+    }
+}

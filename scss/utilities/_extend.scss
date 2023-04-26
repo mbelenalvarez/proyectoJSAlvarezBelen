@@ -1,0 +1,27 @@
+%transformaciones {
+    transform: scale(1.2rem);
+}
+
+%botones {
+    background-color: nth($list: $colores, $n:2);
+    color: nth($list: $colores, $n:3);
+    list-style: none;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    margin: 0.2rem;
+    box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.77);
+    justify-content: center;
+}
+
+%textos {
+    padding: 0.2rem;
+    margin: 0.1rem;
+    background-color: rgb(232, 208, 212);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+%cards {
+    width: 15rem;
+    font-size: 1rem;
+}

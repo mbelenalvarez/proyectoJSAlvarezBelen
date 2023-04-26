@@ -4,9 +4,111 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Proyecto Belén Alvarez </title>
+    <meta name="description" content="Inicio de la pagina">
+    <meta name="keywords" content="HTML, CSS, Home, index, JS">
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <!-- Link css -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Link letra -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+
+  <title>Belen alvarez</title>
 </head>
+
 <body>
-    <script src="./scripts/main.js"></script>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img class="imagenMenu" src="multimedia/logo.jpg" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse row" id="navbarNav">
+          <ul class="navbar-nav row justify-content-end">
+            <li class="nav-item col-auto">
+              <a class="nav-link colorTexto" aria-current="page" href="./paginas/misTrabajos.html"> Mis Trabajos</a>
+            </li>
+            <li class="nav-item col-auto">
+              <a class="nav-link colorTexto"  href="./paginas/quienSoy.html"> Quien soy </a>
+            </li>
+            <li class="nav-item col-auto">
+              <a class="nav-link colorTexto"  href="./paginas/servicios.html"> Servicios </a>
+            </li>
+            <li class="nav-item col-auto">
+                <a class="nav-link colorTexto" href="./paginas/contacto.html"> Contacto </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+<!-- Main -->
+<main class="mainIndex">
+  <div class="menuTextoInterno">
+    <h2 class="texto-uno"> Belén Alvarez </h2>
+      <h3 class="texto-dos"> Diseñadora UX/UI y Periodista Digital </h3>
+  </div>
+    <div class="menuBoton">
+      <a href="./paginas/misTrabajos.html"> Conocé mis trabajos </a>
+</main>
+
+<!-- Texto Menu -->
+<div class="textoMenu">
+  <p class="principal"> Me gusta la creatividad. Me dedico a hacer realidad tus sueños a través de la redacción y el diseño de contenidos. El poder de las palabras lo es todo </p>
+  <p class="secundario"> Una palabra, un gesto, puede cambiarlo todo. Por eso es importante que puedas añadir tu toque a todo lo que te propongas, y que mejor que incorporar el diseño para hacerlo realidad </p>
+  <p class="terciario"> Esto es lo que soy, un amante de las palabras y el diseño ¿Querés conocerme más? </p>
+</div>
+
+<!-- Servicio -->
+<section class="service">
+  <h2> Servicios </h2>
+  <ul>
+    <li class="servicio-uno"> Creación de noticias <p> Escritura de medios periodísticos hechos a tu medida </p> </li>
+    <li class="servicio-dos"> Diseño de páginas <p> Boceto de tu landing page </p> </li>
+    <li class="servicio-tres"> Copywriting <p> Redacción de tu contenido </p> </li>
+  </ul>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="misDatos">
+      <h4> Belen Alvarez </h4>
+      <h3> Celular: +549123456789 </h3>
+      <h3> Dirección: Mar del Plata, Argentina </h3>
+    </div>
+    <div class="menuFooter">
+      <ul>
+        <li>
+          <a href="index.html"> Inicio </a>
+        </li>
+        <li>
+          <a href="./paginas/misTrabajos.html"> Mis Trabajos</a>
+        </li>
+        <li>
+          <a href="./paginas/servicios.html"> Servicios </a>
+        </li>
+        <li>
+          <a href="./paginas/contacto.html"> Contacto </a>
+        </li>
+      </ul>
+    </div>
+</footer>
+
+<!-- JavaScript Bundle with Popper -->
+<script src="./scripts/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
 </body>
 </html>

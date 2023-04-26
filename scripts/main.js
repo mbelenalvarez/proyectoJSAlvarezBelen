@@ -33,18 +33,11 @@ do {
 let descuento = 0;
 function calcularDescuento(cantidadProductos, precio) {
   let descuento = 0;
-  switch (cantidadProductos) {
-    case 0: // 0  -->  0%
-      descuento = 0;
-      break;
-    case 1: // 1  -->  0%
-      descuento = 0;
-      break;
-    case 2: // 2  -->  10%
-      descuento = precio * 0.1; // 0.10 --> 10/100
-      break;
-  }
-  return descuento;
+  if (cantidadProductos >= 2) {
+    if descuento = precio * 0.1; // 0.10 --> 10/100
+  } else {
+    return descuento;
+  }  
 }
 
 function costoTotal(productos) {

@@ -1,0 +1,252 @@
+@import "utilities/list";
+@import "utilities/mixin";
+@import "utilities/extend";
+@import "utilities/variables";
+@import "utilities/animacion";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    list-style: none;
+}
+
+/* nesting */
+
+/* menu principal */
+header {
+    background-color: nth($list: $colores, $n:1);
+    font-weight: $fuente;
+    .imagenMenu {
+        @include medidas(5rem, 3rem)
+        padding-left: 1.8rem;
+    }
+    .colorTexto {
+        color: nth($list: $colores, $n:2);
+        text-decoration: none;
+    }
+    nav ul li a {
+        font-size: $medida;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+    }
+    a {
+        &:hover{
+        @extend %transformaciones;
+        color: beige;
+        text-decoration: none;
+        }
+    }
+}
+
+/* Index */
+.mainIndex {
+    text-decoration: none;
+    background-image: url(../multimedia/fondo.jpg);
+    @include medidas(100vw, 100vh);
+    @include gridMain;
+    .menuTextoInterno {
+        color: nth($list: $colores, $n:4);
+        grid-area: menuTextoInterno;
+    }
+    .menuBoton {
+        background-color: nth($list: $colores, $n:2);
+        color: nth($list: $colores, $n:3);
+        font-size: 1.2rem;
+        border-radius: 1.5rem;
+        grid-area: menuBoton;
+        text-decoration: none;
+        &:hover{
+            @extend %transformaciones;
+            box-shadow: rgba(0, 0, 0, 0.77) 2px 2px;
+        }
+    }
+    div a {
+        color: nth($list: $colores, $n:3);
+        text-decoration: none;
+    }
+}
+
+.textoMenu {
+    background-color: nth($list: $colores, $n:1);
+    @include gridTextoMenu;
+    .principal {
+        font-size: 1.2rem;
+        font-weight: $fuente;
+        font-style: italic;
+        padding: $medida;
+        grid-area: principal;
+    }
+    .secundario {
+        font-size: $medida;
+        padding: $medida;
+        grid-area: secundario;
+    }
+    .terciario {
+        font-size: $medida;
+        padding: $medida;
+        grid-area: terciario;
+    }
+}
+
+.service {
+    background-color: nth($list: $colores, $n:3);
+    h2 {
+    color: nth($list: $colores, $n:5);
+    text-align: start;
+    padding-left: $medida*2;
+    font-size: 1.5rem;
+    font-style: italic;
+    }
+    ul li {
+        @include servicioIndex;
+        text-align: start;
+        font-size: 1.1rem;
+        font-weight: $fuente;
+        padding-left: $medida;
+        p {
+            font-weight: normal;
+            padding-right: $medida;
+            color: nth($list: $colores, $n:2);
+            grid-area: p;
+        }
+        .servicio-uno {
+            grid-area: s1;
+        }
+        .servicio-dos {
+            grid-area: s2;
+        }
+        .servicio-tres {
+            grid-area: s3;
+        }
+    }
+}
+
+/* footer titulos */
+footer {
+    background-color: nth($list: $colores, $n:2);
+    @include flex;
+    margin-top: 0.5rem;
+    .misDatos {
+        padding: 1.5rem;
+    }
+    div h4 {
+        color: nth($list: $colores, $n:5);
+        font-size: 1.3rem;
+    }
+    div h3 {
+        font-size: $medida;
+    }
+    div ul li a {
+        color: nth($list: $colores, $n:5);
+        text-decoration: none;
+        margin-top: $medida;
+    }
+}
+
+.titulos {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    font-weight: $fuente;
+    font-style: italic;
+    color: nth($list: $colores, $n:5);
+}
+
+/* contacto */
+
+form fieldset {
+    background-color: nth($list: $colores, $n:1);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    legend{
+        background-color: nth($list: $colores, $n:2);
+        font-weight: $fuente;
+    }
+    .input {
+        grid-area: enviar;
+    }
+    button, input, select, textarea {
+        background-color: nth($list: $colores, $n:2);
+        font-size: 80%;
+        border-radius: 0.3rem;
+        margin: 0.3rem;
+        padding: 0.3rem;
+        font-weight: $fuente;
+        border-style: $fuente
+    }
+}
+
+.formContacto {
+    @include flex;
+    .imagenContacto {
+        width: 30%;
+    }
+}
+
+
+/* mis trabajos */
+
+.cards {
+    @include gridCards;
+    .card1 {
+        @extend %cards;
+        grid-area: card1;
+        padding: $medida;
+    }
+    .card2 {
+        @extend %cards;
+        grid-area: card2;
+        padding: $medida;
+    }
+    .card3 {
+        @extend %cards;
+        grid-area: card3;
+        padding: $medida;
+    }
+    .card4 {
+        @extend %cards;
+        grid-area: card4;
+        padding: $medida;
+    }
+    .card5 {
+        @extend %cards;
+        grid-area: card5;
+        padding: $medida;
+    }
+    .card6 {
+        @extend %cards;
+        grid-area: card6;
+        padding: $medida;
+    }
+    .btn {
+        @extend %botones;
+    }
+}
+
+/* Servicios */
+
+.cardServicio {
+    @include flex;
+    .cardS1 {
+        @extend %cards;
+        padding: $medida;
+    }
+    .cardS2 {
+        @extend %cards;
+        padding: $medida;
+    }
+    .cardS3 {
+        @extend %cards;
+        padding: $medida;
+    }
+    .btn {
+        @extend %botones;
+    }
+}
+
+/* media querie */
+
+@import "utilities/mediaqueries"; 
