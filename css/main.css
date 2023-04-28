@@ -261,6 +261,63 @@ footer div ul li a {
   color: crimson;
 }
 
+/* quien soy */
+.mainQuienSoy .slider {
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 42rem;
+}
+
+.mainQuienSoy .contentSlider {
+  width: 500px;
+}
+
+.mainQuienSoy .button.carousel-control-prev {
+  right: 2rem;
+}
+
+.mainQuienSoy .button.carousel-control-next {
+  left: 25rem;
+}
+
+.mainQuienSoy .videoImagen {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mainQuienSoy .imagenBelen img {
+  width: 30rem;
+  height: 20rem;
+  margin: 0.3rem;
+}
+
+.mainQuienSoy .video iframe {
+  width: 30rem;
+  height: 20rem;
+}
+
+.mainQuienSoy .textoQuien {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  background-color: #fdebde;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+.mainQuienSoy .textoQuien h2 {
+  font-size: 50px;
+  font-weight: bold;
+  font-style: italic;
+  margin-inline-start: 0.8rem;
+}
+.mainQuienSoy .textoQuien p {
+  font-size: 15px;
+  margin-top: 1rem;
+}
+
 /* contacto */
 form fieldset {
   background-color: #fdebde;
@@ -398,6 +455,41 @@ form fieldset textarea {
   }
   header .imagenMenu {
     height: 30%;
+  }
+  .mainQuienSoy .videoImagen {
+    display: block;
+  }
+  .mainQuienSoy .video iframe {
+    width: 20rem;
+    height: 15rem;
+  }
+  .mainQuienSoy .imagenBelen img {
+    width: 20rem;
+    height: 15rem;
+  }
+  .mainQuienSoy .textoQuien {
+    display: block;
+    border-radius: 8px;
+  }
+  .mainQuienSoy .textoQuien h2 {
+    font-size: 30px;
+  }
+  .mainQuienSoy .textoQuien p {
+    font-size: 15px;
+  }
+  .mainQuienSoy .slider {
+    width: 100%;
+    padding: 0.2rem;
+    overflow: hidden;
+  }
+  .mainQuienSoy .ancho_an {
+    width: 80%;
+  }
+  .mainQuienSoy .button.carousel-control-prev {
+    right: 6rem;
+  }
+  .mainQuienSoy .button.carousel-control-next {
+    left: 15rem;
   }
   .formContacto img {
     display: none;

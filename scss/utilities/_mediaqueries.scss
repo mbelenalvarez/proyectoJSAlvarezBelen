@@ -9,6 +9,16 @@
             text-shadow: 2px 2px beige;
         }
     }
+    .mainQuienSoy {
+        .video iframe {
+            width: 15rem;
+            height: 10rem;
+        }
+        .imagenBelen img {
+            width: 15rem;
+            height: 10rem;
+        }
+    }
 }
 
 @media screen and (max-width:600px) {    
@@ -43,6 +53,44 @@
     header .imagenMenu {
         height: 30%;
     }
+
+    .mainQuienSoy {
+        .videoImagen {
+            display: block;
+        }
+        .video iframe {
+            width: 20rem;
+            height: 15rem;
+        }
+        .imagenBelen img {
+            width: 20rem;
+            height: 15rem;
+        }
+        .textoQuien {
+            display: block;
+            border-radius: 8px;
+            h2 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+        .slider{
+            width: 100%;
+            padding: 0.2rem;
+            overflow: hidden;
+        }
+        .ancho_an {
+            width: 80%;
+        }
+        .button.carousel-control-prev{
+            right: $medida*6;
+        }
+        .button.carousel-control-next{
+            left: $medida*15;
+        }
+}
 
     .formContacto img {
     display: none;

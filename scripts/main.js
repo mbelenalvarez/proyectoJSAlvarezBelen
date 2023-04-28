@@ -1,7 +1,7 @@
 console.log("Hola bienvenido a mi proyecto");
 
 // Sumando productos
-class producto {
+class Producto {
   constructor(nombre, precio) {
     this.nombre = nombre.toUpperCase();
     this.precio = parseFloat(precio);
@@ -9,9 +9,9 @@ class producto {
 }
 
 let misProductos = [
-  new producto("creación de noticias", 10000),
-  new producto("diseño de páginas", 50000),
-  new producto("copywriting", 5000),
+  new Producto("creación de noticias", 10000),
+  new Producto("diseño de páginas", 50000),
+  new Producto("copywriting", 5000),
 ];
 
 //Empleo de do...while para cargar más productos
@@ -20,7 +20,7 @@ let respuesta = "SI";
 do {
   let nombre = prompt("Ingrese el nombre del producto");
   let precio = prompt("Ingrese el precio del producto");
-  misProductos.push(new producto(nombre, precio));
+  misProductos.push(new Producto(nombre, precio));
   console.log(
     "--> El producto agregado es",
     nombre + " y su precio es de",
@@ -28,6 +28,16 @@ do {
   );
   respuesta = prompt("¿Quieres seguir añadiendo más productos? SI/NO");
 } while (respuesta.toUpperCase() !== "NO");
+
+
+// Cargamos la lista de productos disponibles en la UI con la lista creada anteriormente
+let productosList = document.getElementById("Producto");
+Producto.forEach((unProducto) => {
+  let item = document.createElement("cardServicio");
+  item.innerText = unProducto.nombre.toUpperCase();
+  item.value = unProducto.precio;
+  productosList.append(item);
+});
 
 //Empleo de descuento por compra de más de 2 productos
 let descuento = 0;
@@ -73,6 +83,14 @@ if (productoBuscado !== undefined) {
 } else {
   alert("No encontramos el producto con nombre: " + buscarNombre);
 }
+
+// Buscamos el producto y evaluamos si existe o no
+let unProducto = buscarProducto(parseInt(nombre));
+  if (!unProducto) {
+    // informar de error
+    showErrorMessage(["No se encuentra el producto seleccionado"]);
+    return false;
+  }
 
 // Método filter para filtrar elementos de mi colección
 

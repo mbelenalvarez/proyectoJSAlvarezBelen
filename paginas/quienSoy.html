@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Servicios de la pagina" />
-    <meta name="keywords" content="HTML, CSS, servicios, JS" />
+    <meta name="description" content="Quien soy de la pagina" />
+    <meta name="keywords" content="HTML, CSS, Belen, quienSoy, JS" />
 
     <!-- CSS only -->
     <link
@@ -25,7 +25,8 @@
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap"
       rel="stylesheet"
     />
-    <title>Servicios</title>
+
+    <title>Quien soy</title>
   </head>
   <body>
     <!-- Header -->
@@ -63,8 +64,8 @@
                 </a>
               </li>
               <li class="nav-item col-auto">
-                <a class="nav-link colorTexto" href="quienSoy.html">
-                  Quien soy
+                <a class="nav-link colorTexto" href="servicios.html">
+                  Servicios
                 </a>
               </li>
               <li class="nav-item col-auto">
@@ -80,52 +81,101 @@
 
     <!-- Titulo -->
     <div class="titulos">
-      <h1>Servicios</h1>
+      <h1>Quien soy</h1>
     </div>
 
-    <!-- Cards -->
-    <div class="cardServicio">
-      <div class="cardS1">
-        <img
-          src="../multimedia/noticia.png"
-          class="card-img-top"
-          alt="Imagen noticia"
-        />
-        <div class="card-body">
-          <h4 class="card-title">Creación de noticias</h4>
-          <p class="card-text">Redacción de contenido periodístico</p>
-          <a href="contacto.html" class="btn"> ¡Cotizá! </a>
+    <!-- Contenido main -->
+    <main class="mainQuienSoy">
+      <div class="slider">
+        <div class="contentSlider">
+          <div
+            id="carouselExampleInterval"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img
+                  src="../multimedia/CursoDiseño1.png"
+                  class="ancho_an"
+                  alt="Certificado Diseño UX/UI"
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img
+                  src="../multimedia/CursoDiseño2.png"
+                  class="ancho_an"
+                  alt="Certificado Diseño UX/UI Avanzado"
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img
+                  src="../multimedia/CursoPs.png"
+                  class="ancho_an"
+                  alt="Certificado Photoshop e Illustrator"
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img
+                  src="../multimedia/CursoWriter.png"
+                  class="ancho_an"
+                  alt="Certificado UX Writer"
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden"> Atrás </span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleInterval"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden"> Siguiente </span>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="cardS2">
-        <img
-          src="../multimedia/diseño.png"
-          class="card-img-top"
-          alt="Imagen diseño"
-        />
-        <div class="card-body">
-          <h4 class="card-title">Diseño de páginas</h4>
-          <p class="card-text">
-            Boceto e implementación de páginas web o UX/UI
-          </p>
-          <a href="contacto.html" class="btn"> ¡Cotizá! </a>
+
+      <div class="textoQuien">
+        <h2>¡Hola!</h2>
+        <p>
+          Soy Belén Alvarez, Periodista Digital y Diseñadora UX/UI. Me apasiona
+          la redacción y determinar cómo se va a ver y en qué lugares. Por eso
+          quiero que me conozcas, inspirarte y ser parte de todos tus proyectos
+          creativos
+        </p>
+      </div>
+
+      <div class="videoImagen">
+        <div class="imagenBelen">
+          <img src="../multimedia/belen.jpg" alt="Belen Alvarez" />
+        </div>
+        <div class="video">
+          <iframe
+            src="https://www.youtube.com/embed/YeRcO3ELr9A"
+            title="Presentación Lic en Criminalistica"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
-      <div class="cardS3">
-        <img
-          src="../multimedia/copy.png"
-          class="card-img-top"
-          alt="Imagen copywriting"
-        />
-        <div class="card-body">
-          <h4 class="card-title">Copywriting</h4>
-          <p class="card-text">
-            Escritura de contenido para tus redes sociales
-          </p>
-          <a href="contacto.html" class="btn"> ¡Cotizá! </a>
-        </div>
-      </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -156,8 +206,9 @@
     </footer>
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="../scripts/main.js"></script>
 
+    <script src="../scripts/main.js"></script>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"

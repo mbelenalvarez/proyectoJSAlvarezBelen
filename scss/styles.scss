@@ -154,6 +154,55 @@ footer {
     color: nth($list: $colores, $n:5);
 }
 
+/* quien soy */
+
+.mainQuienSoy {
+    .slider{
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: $medida*42;
+    }
+    .contentSlider{
+        width: 500px;
+    }
+    .button.carousel-control-prev{
+        right: $medida*2;
+    }
+    .button.carousel-control-next{
+        left: $medida*25;
+    }
+    .videoImagen {
+        @include flex;
+    }
+    .imagenBelen img {
+        @include medidas(30rem, 20rem);
+        margin: 0.3rem;
+    }
+    .video iframe {
+        @include medidas(30rem, 20rem);
+    }
+    .textoQuien {
+        padding: $medida;
+        margin: $medida;
+        border-radius: 10px;
+        background-color: nth($list: $colores, $n:1);
+        @include flex;
+        gap: $medida*2;
+        h2 {
+            font-size: 50px;
+            font-weight: $fuente;
+            font-style: italic;
+            margin-inline-start: 0.8rem;
+        }
+        p {
+            font-size: 15px;
+            margin-top: $medida;
+        }
+    }
+}
+
 /* contacto */
 
 form fieldset {
