@@ -3,7 +3,7 @@ header a:hover,
   transform: scale(1.2rem);
 }
 
-.cards .btn,
+.cards .btn
 .cardServicio .btn {
   background-color: #88ada4;
   color: beige;

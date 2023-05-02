@@ -3,7 +3,7 @@ console.log("Hola bienvenido a mi proyecto");
 // Mis productos
 class Producto {
   constructor(id, nombre, precio) {
-    this.id = parseFloat(id)
+    this.id = parseFloat(id);
     this.nombre = nombre.toUpperCase();
     this.precio = parseFloat(precio);
   }
@@ -17,65 +17,64 @@ const misProductos = [
 
 console.log("Mis productos son", misProductos);
 
-const contenedorProductos 
+const productos = [
+  {
+    id: 1,
+    img: "../multimedia/noticia.png",
+    nombre: "Creación de noticias",
+    descripción: "Redacción de contenido periodístico",
+  },
+  {
+    id: 2,
+    img: "../multimedia/diseño.png",
+    nombre: "Diseño de páginas",
+    descripción: "Boceto e implementación de páginas web o UX/UI",
+  },
+  {
+    id: 3,
+    img: "../multimedia/copy.png",
+    nombre: "Copywriting",
+    descripción: "Escritura de contenido para tus redes sociales",
+  },
+];
 
-// Cargamos la lista de productos disponibles en la UI con la lista creada anteriormente
-let productosList = document.getElementById("Producto");
-Producto.forEach((unProducto) => {
-  let item = document.createElement("cardServicio");
-  item.value = unProducto.id; 
-  item.innerText = unProducto.nombre.toUpperCase();
-  item.value = unProducto.precio;
-  productosList.append(item);
+console.log(
+  "Los productos a seleccionar son " + productos[0].nombre,
+  productos[1].nombre,
+  productos[2].nombre
+);
+
+const cards = document.getElementById("cards");
+productos.forEach((productos) => {
+  cards.innerHTML += `
+<div class="cardS${productos.id}"> <img
+src="${productos.img}"
+class="card-img-top"
+/>
+<div class="card-body">
+<h4 class="card-title">${productos.nombre}</h4>
+<p class="card-text">${productos.descripción}</p>
+<button class="btn"> Agregá al carrito </button>
+</div>
+</div>
+`;
 });
 
-//Empleo de descuento por compra de más de 2 productos
-let descuento = 0;
-function calcularDescuento(cantidadProductos, precio) {
-  if (cantidadProductos >= 2) {
-    precio * 0.1; // 0.10 --> 10/100
-  } else {
-    return descuento;
-  }  
+const boton = document.querySelectorAll(`.btn`);
+boton.forEach((P) => {
+  P.addEventListener("click", (e) => {
+    agregarCarrito(e.target.id);
+  });
+  console.log(boton);
+});
+
+const carrito = [];
+
+// Método find para hallar un producto dentro de la colección
+function agregarCarrito(id) {
+  let productoBuscado = misProductos.find(
+    (productos) => productos.nombre === Producto
+  );
+  carrito.push(productoBuscado);
+  console.log(carrito);
 }
-
-function costoTotal(productos) {
-  let total = 0;
-  for (const unProducto of productos) {
-    total += unProducto.precio;
-  }
-  return total;
-}
-
-let costoFinal = costoTotal(misProductos);
-descuento = calcularDescuento(misProductos.length, costoFinal);
-costoFinal = costoFinal - descuento;
-alert(
-  "El usuario deberá abonar un total de $" +
-    costoFinal.toFixed(2) +
-    " y usted recibió un descuento de $" +
-    descuento.toFixed(2) +
-    " por la compra de " +
-    misProductos.length +
-    " productos."
-);
-
-// Método find para hallar un elemento dentro de la colección
-let buscarNombre = prompt("¿Qué producto quieres buscar?");
-
-let productoBuscado = misProductos.find(
-  (unProducto) => unProducto.nombre.toUpperCase() === buscarNombre.toUpperCase()
-);
-
-if (productoBuscado !== undefined) {
-  alert("Si existe el producto buscado " + productoBuscado.nombre);
-} else {
-  alert("No encontramos el producto con nombre: " + buscarNombre);
-}
-
-// Buscamos el producto y evaluamos si existe o no
-let unProducto = buscarProducto(parseInt(nombre));
-  if (!unProducto) {
-    // informar de error
-    showErrorMessage(["No se encuentra el producto seleccionado"]);
-  }
