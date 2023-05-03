@@ -56,6 +56,7 @@ console.log("Los datos de los productos antes de almacenarse", {
 });
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse (localStorage.getItem("productos"));
+console.log("Los productos recuperados del localStorage", {misProductos});
 
 // Botón agregar al carrito
 const boton = document.querySelectorAll(`.btn`);
@@ -77,6 +78,7 @@ function agregarCarrito(id) {
   localStorage.setItem("carrito", JSON.stringify(carrito));
   console.log(carrito);
   let verCarrito = JSON.parse (localStorage.getItem("carrito"));
+  console.log("El carrito recuperado del localStorage", {verCarrito});
   let costoFinal = costoTotal(carrito);
   console.log(costoFinal);
   descuento = calcularDescuento(carrito.length, costoFinal);

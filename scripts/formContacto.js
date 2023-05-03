@@ -35,6 +35,7 @@ function limpiarCampos() {
   }
   
   let formContacto = JSON.parse (localStorage.getItem("formulario contacto"));
+  console.log("Los datos recuperados del localStorage", {formContacto});
 
   function hideMessage() {
     console.log("Tu consulta ha sido enviada");
