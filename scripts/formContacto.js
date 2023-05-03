@@ -1,4 +1,7 @@
 const formularioContacto = document.getElementById("formularioContacto");
+const mensaje = document.getElementById("mensajeFinal");
+
+let consultas = []
 
 function limpiarCampos() {
     // Limpiar todos y cada uno de los inputs
@@ -17,6 +20,17 @@ function limpiarCampos() {
     const numeroF = document.getElementById("numero").value;
     
     const mensajeF = document.getElementById("mensaje").value;
+
+    const consulta = {
+      nombre: nombreF,
+      mail: mailF,
+      numero: numeroF,
+      mensaje: mensajeF
+    }
+    consultas.push(consulta)
+
+    localStorage.setItem("formulario contacto", JSON.stringify(consultas));
+    console.log(consulta);
     return errores;
   }
   
@@ -26,9 +40,10 @@ function limpiarCampos() {
 
   formularioContacto.addEventListener("submit", (event) => {
     event.preventDefault();
+    validarFormulario();
     event.target.setAttribute("class", "needs-validation");
+    mensaje.innerText = "Tu consulta ha sido enviada"
     hideMessage();
 }) 
 
-localStorage.setItem("formulario contacto", JSON.stringify(formularioContacto));
-console.log(formularioContacto);
+
