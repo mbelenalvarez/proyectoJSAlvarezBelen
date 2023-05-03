@@ -34,6 +34,8 @@ function limpiarCampos() {
     return errores;
   }
   
+  let formContacto = JSON.parse (localStorage.getItem("formulario contacto"));
+
   function hideMessage() {
     console.log("Tu consulta ha sido enviada");
   }

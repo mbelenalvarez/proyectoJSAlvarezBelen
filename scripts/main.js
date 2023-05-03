@@ -55,6 +55,7 @@ console.log("Los datos de los productos antes de almacenarse", {
   productos,
 });
 localStorage.setItem("productos", JSON.stringify(productos));
+let misProductos = JSON.parse (localStorage.getItem("productos"));
 
 // Botón agregar al carrito
 const boton = document.querySelectorAll(`.btn`);
@@ -75,11 +76,13 @@ function agregarCarrito(id) {
   carrito.push(productoBuscado);
   localStorage.setItem("carrito", JSON.stringify(carrito));
   console.log(carrito);
+  let verCarrito = JSON.parse (localStorage.getItem("carrito"));
   let costoFinal = costoTotal(carrito);
   console.log(costoFinal);
   descuento = calcularDescuento(carrito.length, costoFinal);
   console.log(descuento);
 }
+
 
 //Empleo de descuento por compra de más de 2 productos
 
