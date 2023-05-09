@@ -76,15 +76,13 @@ function agregarCarrito(id) {
   carrito.push(productoBuscado);
   localStorage.setItem("carrito", JSON.stringify(carrito));
   console.log(carrito);
-  const toast = (productos) => {
     Toastify({
-      text: `${productos.nombre} agregado con éxito`,
+      text: `${productoBuscado.nombre} agregado con éxito`,
       duration: 3000,
       style: {
         background: "linear-gradient(to right, #00b09b, #96c93d)",
       },
     }).showToast();
-  }
   let verCarrito = JSON.parse (localStorage.getItem("carrito"));
   console.log("El carrito recuperado del localStorage", {verCarrito});
   let costoFinal = costoTotal(carrito);
@@ -93,20 +91,40 @@ function agregarCarrito(id) {
   console.log(descuento);
 }
 
+const checkOut = () => {
+  if (carrito.length) {
+
+    
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "No hay items en el carrito",
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  }
+};
+
+const orden = () => {
+  let message = "";
+  carrito.forEach((e) => {
+    const { nombre, precio } = e;
+    message += `<p>( ${nombre} - $${precio}</p>`;
+  });
+  return message;
+}; 
+
 //Empleo de descuento por compra de más de 2 productos
 
 function calcularDescuento(cantidadProductos, precio) {
   if (cantidadProductos >= 2) {
     let descuento = precio * 0.1; // 0.10 --> 10/100
-    console.log (
-      "El usuario deberá abonar un total de $" +
-        precio.toFixed(2) +
-        " y usted recibió un descuento de $" +
-        descuento +
-        " por la compra de " +
-        cantidadProductos +
-        " productos."
-    ) 
+    Swal.fire({
+      icon: "success",
+      title: "¡Genial!",
+      html: `Su orden:\n${orden}Ha sido generada con éxito. \n`,
+      footer: `Precio total de su orden: $${precio.toFixed(2)} con un descuento de $${descuento}`,
+    });
   } else {
     descuento = 0
     return descuento;
