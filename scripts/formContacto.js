@@ -1,5 +1,4 @@
 const formularioContacto = document.getElementById("formularioContacto");
-const mensaje = document.getElementById("mensajeFinal");
 
 let consultas = []
 
@@ -37,16 +36,17 @@ function limpiarCampos() {
   let formContacto = JSON.parse (localStorage.getItem("formulario contacto"));
   console.log("Los datos recuperados del localStorage", {formContacto});
 
-  function hideMessage() {
-    console.log("Tu consulta ha sido enviada");
-  }
-
   formularioContacto.addEventListener("submit", (event) => {
     event.preventDefault();
     validarFormulario();
     event.target.setAttribute("class", "needs-validation");
-    mensaje.innerText = "Tu consulta ha sido enviada"
-    hideMessage();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Tu consulta ha sido enviada',
+      showConfirmButton: false,
+      timer: 3000
+    })
 }) 
 
 

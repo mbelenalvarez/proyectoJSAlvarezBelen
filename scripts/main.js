@@ -63,9 +63,8 @@ const boton = document.querySelectorAll(`.btn`);
 boton.forEach((P) => {
   P.addEventListener("click", (e) => {
     agregarCarrito(e.target.id);
+  })
   });
-  console.log(boton);
-});
 
 const carrito = [];
 
@@ -77,6 +76,15 @@ function agregarCarrito(id) {
   carrito.push(productoBuscado);
   localStorage.setItem("carrito", JSON.stringify(carrito));
   console.log(carrito);
+  const toast = (productos) => {
+    Toastify({
+      text: `${productos.nombre} agregado con éxito`,
+      duration: 3000,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+    }).showToast();
+  }
   let verCarrito = JSON.parse (localStorage.getItem("carrito"));
   console.log("El carrito recuperado del localStorage", {verCarrito});
   let costoFinal = costoTotal(carrito);
@@ -84,7 +92,6 @@ function agregarCarrito(id) {
   descuento = calcularDescuento(carrito.length, costoFinal);
   console.log(descuento);
 }
-
 
 //Empleo de descuento por compra de más de 2 productos
 
@@ -111,5 +118,5 @@ function costoTotal(productos) {
   for (const unProducto of productos) {
     total += unProducto.precio;
   }
-  return total;
+  return total; 
 }
