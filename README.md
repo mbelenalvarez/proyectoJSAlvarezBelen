@@ -1,8 +1,5 @@
 # proyectoJSAlvarezBelen
 
-El proyecto se trata de un carrito de compras. 
-El mismo contiene una función que permite solicitar datos ingresados por el usuario.
+El proyecto se trata de un carrito de compras en donde se pueden añadir productos, que serán guardados en el localStorage, y en base a la cantidad de productos añadidos se le hará un descuento.
 
-El código proporcionado implementa un array llamado misProductos () para solicitar información al usuario a través de prompt() y validarla antes de devolverla.
-
-El código está diseñado para validar la entrada del usuario en cada prompt() para asegurarse de que los valores introducidos sean válidos.
+Además en el formulario de la pestaña contactos, también los datos son almacenados en el localStorage.
