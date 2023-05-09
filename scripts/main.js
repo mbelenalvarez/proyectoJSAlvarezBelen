@@ -91,20 +91,6 @@ function agregarCarrito(id) {
   console.log(descuento);
 }
 
-const checkOut = () => {
-  if (carrito.length) {
-
-    
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "No hay items en el carrito",
-      showConfirmButton: false,
-      timer: 3000,
-    });
-  }
-};
-
 const orden = () => {
   let message = "";
   carrito.forEach((e) => {
