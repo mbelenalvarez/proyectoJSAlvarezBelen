@@ -10,6 +10,7 @@ const productos = [
     img: "../multimedia/noticia.png",
     nombre: "Creación de noticias",
     descripción: "Redacción de contenido periodístico",
+    cantidad: 10,
     precio: 10000,
   },
   {
@@ -17,6 +18,7 @@ const productos = [
     img: "../multimedia/diseño.png",
     nombre: "Diseño de páginas",
     descripción: "Boceto e implementación de páginas web o UX/UI",
+    cantidad: 5,
     precio: 5000,
   },
   {
@@ -24,15 +26,10 @@ const productos = [
     img: "../multimedia/copy.png",
     nombre: "Copywriting",
     descripción: "Escritura de contenido para tus redes sociales",
+    cantidad: 10,
     precio: 5000,
   },
 ];
-
-console.log(
-  "Los productos a seleccionar son " + productos[0].nombre,
-  productos[1].nombre,
-  productos[2].nombre
-);
 
 const cards = document.getElementById("cards");
 productos.forEach((productos) => {
@@ -44,7 +41,10 @@ class="card-img-top"
 <div class="card-body">
 <h4 class="card-title">${productos.nombre}</h4>
 <p class="card-text">${productos.descripción}</p>
+<p class="p-unidades"> Stock: ${productos.cantidad}</p>
+      <button class="restar"> ➖ </button> 
 <button id=${productos.id} class="btn"> Agregá al carrito </button>
+      <button class="sumar"> ➕ </button>
 </div>
 </div>
 `;
@@ -91,11 +91,27 @@ function agregarCarrito(id) {
   console.log(descuento);
 }
 
+let carritoContent = document.createElement("div");
+
+// Restar cantidad de unidades de un producto 
+  let restar = carritoContent.querySelector(".restar");
+  restar.addEventListener("click", () => {
+      if (productos.cantidad !== 1) {
+          productos.cantidad--;
+      };
+  });
+
+  // Sumar cantidad de unidades de un producto 
+  let sumar = carritoContent.querySelector(".sumar");
+  sumar.addEventListener("click", () => {
+      productos.cantidad++;
+  });
+
 const orden = () => {
   let message = "";
   carrito.forEach((e) => {
     const { nombre, precio } = e;
-    message += `<p>( ${nombre} - $${precio}</p>`;
+    message += `<p> ${nombre} - $${precio}</p>`;
   });
   return message;
 }; 
@@ -108,7 +124,7 @@ function calcularDescuento(cantidadProductos, precio) {
     Swal.fire({
       icon: "success",
       title: "¡Genial!",
-      html: `Su orden:\n${orden}Ha sido generada con éxito. \n`,
+      html: `Su orden:\n${orden ()}Ha sido generada con éxito. \n`,
       footer: `Precio total de su orden: $${precio.toFixed(2)} con un descuento de $${descuento}`,
     });
   } else {

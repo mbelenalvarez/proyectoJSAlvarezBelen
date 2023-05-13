@@ -41,7 +41,6 @@ function limpiarCampos() {
     validarFormulario();
     event.target.setAttribute("class", "needs-validation");
     Swal.fire({
-      position: 'top-end',
       icon: 'success',
       title: 'Tu consulta ha sido enviada',
       showConfirmButton: false,
