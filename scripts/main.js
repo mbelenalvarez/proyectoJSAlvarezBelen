@@ -41,9 +41,9 @@ class="card-img-top"
 <div class="card-body">
 <h4 class="card-title">${productos.nombre}</h4>
 <p class="card-text">${productos.descripción}</p>
-<button id=${productos.cantidad} class="restar"> ➖ </button> 
+<button "restar-id=${productos.id}" class="restar"> ➖ </button> 
 <button id=${productos.id} class="btn"> Agregá al carrito </button>
-<button id=${productos.id} class="sumar"> ➕ </button>
+<button "sumar+id=${productos.id}" class="sumar"> ➕ </button>
 </div>
 </div>
 `;
@@ -93,17 +93,16 @@ function agregarCarrito(id) {
 let carritoContent = document.createElement("div");
 
 // Restar cantidad de unidades de un producto 
+let restar = document.querySelectorAll(".restar");
 for (const boton of restar) {
-  boton.addEventListener("click", () => {
-      if (productos.cantidad !== 1) {
-          productos[0].cantidad--;
-      };
+  boton.addEventListener("click", (e) => {
+      const id = e.target.id.split("-")[1] 
       Swal.fire({
         title: '¿Querés eliminar el producto de tu carrito',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Si, eliminalo'
       }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire(
@@ -112,13 +111,16 @@ for (const boton of restar) {
           )
         }
       })
-  }); };
+    })
+    };
 
 // Sumar cantidad de unidades de un producto 
+let sumar = document.querySelectorAll(".sumar");
 for (const boton of sumar) {
-  boton.addEventListener("click", () => {
-      productos[0].cantidad++;
-  }); };
+  boton.addEventListener("click", (e) => {
+      const id = e.target.id.split("-")[1];
+    });
+  };
 
 
 const orden = () => {
