@@ -12,24 +12,26 @@ const traerProductos = async () => {
 
     // Procesar y mostrar los productos en el HTML
     const cards = document.getElementById("cards");
-    data.forEach((productos) => {
-      const cardElement = document.createElement("div");
-      cardElement.classList.add(`cardS${productos.id}`);
-      cardElement.innerHTML = `
-        <img src="${productos.img}" class="card-img-top" />
-        <div class="card-body">
-          <h4 class="card-title">${productos.nombre}</h4>
-          <p class="card-text">${productos.descripcion}</p>
-          <button restar-id="${productos.id}" class="restar">➖</button>
-          <button id="${productos.id}" class="btn">Agregá al carrito</button>
+    data.forEach((producto) => {
+      cards.innerHTML += `
+        <div class="cardS${producto.id}">
+          <img src="${producto.img}" class="card-img-top" />
+          <div class="card-body">
+            <h4 class="card-title">${producto.nombre}</h4>
+            <p class="card-text">${producto.descripción}</p>
+            <button restar-id="${producto.id}" class="restar">➖</button>
+            <button id="${producto.id}" class="btn">Agregá al carrito</button>
+          </div>
         </div>
       `;
-      cards.appendChild(cardElement);
     });
   } catch (error) {
     console.error(error);
   }
 };
+
+// Llamar a la función traerProductos para obtener y mostrar los productos
+traerProductos();
 
 console.log("Mis productos son", productos);
 console.log("Los datos de los productos antes de almacenarse", {
