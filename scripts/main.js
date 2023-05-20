@@ -6,27 +6,30 @@ let descuento = 0;
 const productos = [];
 
 const traerProductos = async () => {
-  const resp = await fetch("../stock.json");
-  const data = await resp.json();
-};
+  try {
+    const resp = await fetch("../stock.json");
+    const data = await resp.json();
 
-const cards = document.getElementById("cards");
-productos.forEach((productos) => {
-  cards.innerHTML += `
-<div class="cardS${productos.id}"> <img
-src="${productos.img}"
-class="card-img-top"
-/>
-<div class="card-body">
-<h4 class="card-title">${productos.nombre}</h4>
-<p class="card-text">${productos.descripción}</p>
-<button "restar-id=${productos.id}" class="restar"> ➖ </button> 
-<button id=${productos.id} class="btn"> Agregá al carrito </button>
-<button "sumar+id=${productos.id}" class="sumar"> ➕ </button>
-</div>
-</div>
-`;
-});
+    // Procesar y mostrar los productos en el HTML
+    const cards = document.getElementById("cards");
+    data.forEach((productos) => {
+      const cardElement = document.createElement("div");
+      cardElement.classList.add(`cardS${productos.id}`);
+      cardElement.innerHTML = `
+        <img src="${productos.img}" class="card-img-top" />
+        <div class="card-body">
+          <h4 class="card-title">${productos.nombre}</h4>
+          <p class="card-text">${productos.descripcion}</p>
+          <button restar-id="${productos.id}" class="restar">➖</button>
+          <button id="${productos.id}" class="btn">Agregá al carrito</button>
+        </div>
+      `;
+      cards.appendChild(cardElement);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 console.log("Mis productos son", productos);
 console.log("Los datos de los productos antes de almacenarse", {
@@ -87,14 +90,6 @@ for (const boton of restar) {
         Swal.fire("Eliminado", "El producto ha sido eliminado");
       }
     });
-  });
-}
-
-// Sumar cantidad de unidades de un producto
-let sumar = document.querySelectorAll(".sumar");
-for (const boton of sumar) {
-  boton.addEventListener("click", (e) => {
-    const id = e.target.id.split("-")[1];
   });
 }
 
