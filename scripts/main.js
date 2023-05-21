@@ -1,5 +1,3 @@
-console.log("Hola bienvenido a mi proyecto");
-
 let descuento = 0;
 
 // Mis productos
@@ -20,7 +18,7 @@ const traerProductos = async () => {
           <div class="card-body">
             <h4 class="card-title">${producto.nombre}</h4>
             <p class="card-text">${producto.descripción}</p>
-            <button restar-id="${producto.id}" class="restar">➖</button>
+            <button id="restar-${producto.id}" class="restar">➖</button>
             <button id="${producto.id}" class="btn">Agregá al carrito</button>
           </div>
         </div>
@@ -49,6 +47,14 @@ const traerProductos = async () => {
         }).then((result) => {
           if (result.isConfirmed) {
             Swal.fire("Eliminado", "El producto ha sido eliminado");
+            const productoABorrar = carrito.find (p => p.id == id);
+            if (productoABorrar) {const index = carrito.indexOf (productoABorrar)
+            carrito.splice (index, 1)
+          }} else {
+            Swal.fire({
+              icon: 'error',
+              text: 'El producto no existe en el carrito',
+            })
           }
         });
       });
@@ -61,13 +67,8 @@ const traerProductos = async () => {
 // Llamar a la función traerProductos para obtener y mostrar los productos
 traerProductos();
 
-console.log("Mis productos son", productos);
-console.log("Los datos de los productos antes de almacenarse", {
-  productos,
-});
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
-console.log("Los productos recuperados del localStorage", { misProductos });
 
 const carrito = [];
 
