@@ -13,7 +13,7 @@ const traerProductos = async () => {
     // Procesar y mostrar los productos en el HTML
     const cards = document.getElementById("cards");
     data.forEach((producto) => {
-      productos.push(productos);
+      productos.push(producto);
       cards.innerHTML += `
         <div class="cardS${producto.id}">
           <img src="${producto.img}" class="card-img-top" />
