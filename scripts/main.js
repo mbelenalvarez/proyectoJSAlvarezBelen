@@ -13,6 +13,7 @@ const traerProductos = async () => {
     // Procesar y mostrar los productos en el HTML
     const cards = document.getElementById("cards");
     data.forEach((producto) => {
+      productos.push(productos);
       cards.innerHTML += `
         <div class="cardS${producto.id}">
           <img src="${producto.img}" class="card-img-top" />
@@ -25,6 +26,33 @@ const traerProductos = async () => {
         </div>
       `;
     });
+
+    // Botón agregar al carrito
+    const boton = document.querySelectorAll(`.btn`);
+    boton.forEach((P) => {
+      P.addEventListener("click", (e) => {
+        agregarCarrito(e.target.id);
+      });
+    });
+
+    // Restar cantidad de unidades de un producto
+    let restar = document.querySelectorAll(".restar");
+    for (const boton of restar) {
+      boton.addEventListener("click", (e) => {
+        const id = e.target.id.split("-")[1];
+        Swal.fire({
+          title: "¿Querés eliminar el producto de tu carrito",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, eliminalo",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire("Eliminado", "El producto ha sido eliminado");
+          }
+        });
+      });
+    }
   } catch (error) {
     console.error(error);
   }
@@ -40,14 +68,6 @@ console.log("Los datos de los productos antes de almacenarse", {
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 console.log("Los productos recuperados del localStorage", { misProductos });
-
-// Botón agregar al carrito
-const boton = document.querySelectorAll(`.btn`);
-boton.forEach((P) => {
-  P.addEventListener("click", (e) => {
-    agregarCarrito(e.target.id);
-  });
-});
 
 const carrito = [];
 
@@ -74,27 +94,7 @@ function agregarCarrito(id) {
   console.log(descuento);
 }
 
-let carritoContent = document.createElement("div");
-
-// Restar cantidad de unidades de un producto
-let restar = document.querySelectorAll(".restar");
-for (const boton of restar) {
-  boton.addEventListener("click", (e) => {
-    const id = e.target.id.split("-")[1];
-    Swal.fire({
-      title: "¿Querés eliminar el producto de tu carrito",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminalo",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire("Eliminado", "El producto ha sido eliminado");
-      }
-    });
-  });
-}
-
+// Contenido de mi orden
 const orden = () => {
   let message = "";
   carrito.forEach((e) => {
@@ -105,7 +105,6 @@ const orden = () => {
 };
 
 //Empleo de descuento por compra de más de 2 productos
-
 function calcularDescuento(cantidadProductos, precio) {
   if (cantidadProductos >= 2) {
     let descuento = precio * 0.1; // 0.10 --> 10/100
