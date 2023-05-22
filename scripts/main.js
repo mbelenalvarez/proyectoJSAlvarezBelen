@@ -118,10 +118,10 @@ const itemsEnCarrito = () => {
     <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">${nombre}</th>
-        <button id="restar-${id}" class="restar">➖</button>
-        <th scope="col">${precio}</th>
-        <th scope="col">${cantidad}</th>
+        <th scope="col">${el.nombre}</th>
+        <button id="restar-${el.id}" class="restar">➖</button>
+        <th scope="col">${el.precio}</th>
+        <th scope="col">${el.cantidad}</th>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
