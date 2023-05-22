@@ -3,8 +3,8 @@ header a:hover,
   transform: scale(1.2rem);
 }
 
-.cards .btn
-.cardServicio .btn {
+.cards .btn .btn-carrito
+.cardServicio .btn .btn-carrito{
   background-color: #88ada4;
   color: beige;
   list-style: none;

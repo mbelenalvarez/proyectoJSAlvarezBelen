@@ -19,7 +19,7 @@ header {
     background-color: nth($list: $colores, $n:1);
     font-weight: $fuente;
     .imagenMenu {
-        @include medidas(5rem, 3rem)
+        @include medidas(5rem, 3rem);
         padding-left: 1.8rem;
     }
     .colorTexto {
@@ -292,6 +292,9 @@ form fieldset {
         padding: $medida;
     }
     .btn {
+        @extend %botones;
+    }
+    .btn-carrito {
         @extend %botones;
     }
 }

@@ -43,7 +43,7 @@ traerProductos();
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 
-const carrito = [];
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 // Método find para hallar un producto dentro de la colección
 function agregarCarrito(id) {
@@ -60,8 +60,6 @@ function agregarCarrito(id) {
       background: "linear-gradient(to right, #00b09b, #96c93d)",
     },
   }).showToast();
-  let verCarrito = JSON.parse(localStorage.getItem("carrito"));
-  console.log("El carrito recuperado del localStorage", { verCarrito });
   let costoFinal = costoTotal(carrito);
   console.log(costoFinal);
   descuento = calcularDescuento(carrito.length, costoFinal);
@@ -115,34 +113,37 @@ const carritoVacio = () => {
 
 const itemsEnCarrito = () => {
   miCarrito.innerHTML = ``;
-  carrito.forEach((e) => {
-    const { nombre, precio, cantidad } = e;
+  carrito.forEach((el) => {
+    const { nombre, precio, cantidad } = el;
     let item = document.createElement("div");
     item.innerHTML = `
     <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">${productos.nombre}</th>
-        <button id="restar-${productos.id}" class="restar">➖</button>
-        <th scope="col">${productos.precio}</th>
-        <th scope="col">${productos.cantidad}</th>
+        <th scope="col">${nombre}</th>
+        <button id="restar-${id}" class="restar">➖</button>
+        <th scope="col">${precio}</th>
+        <th scope="col">${cantidad}</th>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
-  </table> */
+  </table>
             `;
     miCarrito.appendChild(item);
   });
 };
 
-const BtnVerCarrito = () => (miCarrito.length ? itemsEnCarrito() : carritoVacio())
+const BtnVerCarrito = (e) => {
+  e.preventDefault(); 
+  itemsEnCarrito()
+};
 
 // Agrego eventos al boton "Ver carrito"
 const verCarritoBtn = document.getElementById("BtnVerCarrito");
 verCarritoBtn.addEventListener("click", () => BtnVerCarrito());
 
 
-  // Restar cantidad de unidades de un producto
+// Restar cantidad de unidades de un producto
   let restar = document.querySelectorAll(".restar");
   for (const boton of restar) {
     boton.addEventListener("click", (e) => {
