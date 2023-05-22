@@ -3,8 +3,8 @@ header a:hover,
   transform: scale(1.2rem);
 }
 
-.cards .btn .btn-carrito
-.cardServicio .btn .btn-carrito{
+.cards .btn 
+.cardServicio .btn {
   background-color: #88ada4;
   color: beige;
   list-style: none;
@@ -14,7 +14,16 @@ header a:hover,
   box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.77);
   justify-content: center;
 }
-
+.btnCarrito {
+  background-color: #88ada4;
+  color: beige;
+  list-style: none;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.77);
+  justify-content: center;
+}
 .cards .card1,
 .cards .card2,
 .cards .card3,

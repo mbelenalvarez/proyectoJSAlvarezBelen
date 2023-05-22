@@ -61,9 +61,7 @@ function agregarCarrito(id) {
     },
   }).showToast();
   let costoFinal = costoTotal(carrito);
-  console.log(costoFinal);
   descuento = calcularDescuento(carrito.length, costoFinal);
-  console.log(descuento);
 }
 
 // Contenido de mi orden
@@ -133,14 +131,14 @@ const itemsEnCarrito = () => {
   });
 };
 
-const BtnVerCarrito = (e) => {
-  e.preventDefault(); 
-  itemsEnCarrito()
+const BtnVerCarrito = (ev) => {
+ ev.preventDefault(); 
+ carrito.length ? itemsEnCarrito() : carritoVacio();
 };
 
 // Agrego eventos al boton "Ver carrito"
 const verCarritoBtn = document.getElementById("BtnVerCarrito");
-verCarritoBtn.addEventListener("click", () => BtnVerCarrito());
+verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
 
 
 // Restar cantidad de unidades de un producto
