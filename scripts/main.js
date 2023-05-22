@@ -18,7 +18,6 @@ const traerProductos = async () => {
           <div class="card-body">
             <h4 class="card-title">${producto.nombre}</h4>
             <p class="card-text">${producto.descripción}</p>
-            <button id="restar-${producto.id}" class="restar">➖</button>
             <button id="${producto.id}" class="btn">Agregá al carrito</button>
           </div>
         </div>
@@ -32,37 +31,6 @@ const traerProductos = async () => {
         agregarCarrito(e.target.id);
       });
     });
-
-    // Restar cantidad de unidades de un producto
-    let restar = document.querySelectorAll(".restar");
-    for (const boton of restar) {
-      boton.addEventListener("click", (e) => {
-        const id = e.target.id.split("-")[1];
-        Swal.fire({
-          title: "¿Querés eliminar el producto de tu carrito",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Si, eliminalo",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire("Eliminado", "El producto ha sido eliminado");
-            const productoABorrar = carrito.find (p => p.id == id);
-            if (productoABorrar) {const index = carrito.indexOf (productoABorrar)
-            carrito.splice (index, 1)
-          }} else {
-            Swal.fire({
-              icon: 'error',
-              text: 'El producto no existe en el carrito',
-            })
-          }
-        });
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 // Llamar a la función traerProductos para obtener y mostrar los productos
 traerProductos();
@@ -130,3 +98,65 @@ function costoTotal(productos) {
   }
   return total;
 }
+
+// Tabla de miCarrito
+const miCarrito = document.getElementById("miCarrito");
+const carritoVacio = () => {
+  miCarrito.innerHTML = ``;
+  let sign = document.createElement("h2");
+  sign.innerHTML = `No items in the Cart`;
+  miCarrito.appendChild(sign);
+};
+
+const itemsEnCarrito = () => {
+  miCarrito.innerHTML = ``;
+  carrito.forEach((e) => {
+    const { nombre, precio, cantidad } = e;
+    let item = document.createElement("div");
+    item.innerHTML = `
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">${productos.nombre}</th>
+        <button id="restar-${productos.id}" class="restar">➖</button>
+        <th scope="col">${productos.precio}</th>
+        <th scope="col">${productos.cantidad}</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table> */
+            `;
+    miCarrito.appendChild(item);
+  });
+};
+
+  // Restar cantidad de unidades de un producto
+  let restar = document.querySelectorAll(".restar");
+  for (const boton of restar) {
+    boton.addEventListener("click", (e) => {
+      const id = e.target.id.split("-")[1];
+      Swal.fire({
+        title: "¿Querés eliminar el producto de tu carrito",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminalo",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado", "El producto ha sido eliminado");
+          const productoABorrar = carrito.find (p => p.id == id);
+          if (productoABorrar) {const index = carrito.indexOf (productoABorrar)
+          carrito.splice (index, 1)
+        }} else {
+          Swal.fire({
+            icon: 'error',
+            text: 'El producto no existe en el carrito',
+          })
+        }
+      });
+    });
+  }
+} catch (error) {
+  console.error(error);
+}
+};
