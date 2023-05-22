@@ -31,6 +31,11 @@ const traerProductos = async () => {
         agregarCarrito(e.target.id);
       });
     });
+  }
+    catch (error) {
+    console.error(error);
+  }
+};
 
 // Llamar a la función traerProductos para obtener y mostrar los productos
 traerProductos();
@@ -103,8 +108,8 @@ function costoTotal(productos) {
 const miCarrito = document.getElementById("miCarrito");
 const carritoVacio = () => {
   miCarrito.innerHTML = ``;
-  let sign = document.createElement("h2");
-  sign.innerHTML = `No items in the Cart`;
+  let sign = document.createElement("h3");
+  sign.innerHTML = `No hay elementos en el carrito`;
   miCarrito.appendChild(sign);
 };
 
@@ -163,7 +168,4 @@ verCarritoBtn.addEventListener("click", () => BtnVerCarrito());
       });
     });
   }
-} catch (error) {
-  console.error(error);
-}
-};
+
