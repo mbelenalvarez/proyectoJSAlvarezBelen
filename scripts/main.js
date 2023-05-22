@@ -130,6 +130,11 @@ const itemsEnCarrito = () => {
   });
 };
 
+const BtnVerCarrito = () => (miCarrito.length ? itemsEnCarrito() : carritoVacio());
+
+const BtnVerCarrito = document.getElementById("BtnVerCarrito");
+BtnVerCarrito.addEventListener("click", () => showCart());
+
   // Restar cantidad de unidades de un producto
   let restar = document.querySelectorAll(".restar");
   for (const boton of restar) {
