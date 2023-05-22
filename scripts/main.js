@@ -130,10 +130,12 @@ const itemsEnCarrito = () => {
   });
 };
 
-const BtnVerCarrito = () => (miCarrito.length ? itemsEnCarrito() : carritoVacio());
+const BtnVerCarrito = () => (miCarrito.length ? itemsEnCarrito() : carritoVacio())
 
-const BtnVerCarrito = document.getElementById("BtnVerCarrito");
-BtnVerCarrito.addEventListener("click", () => showCart());
+// Agrego eventos al boton "Ver carrito"
+const verCarritoBtn = document.getElementById("BtnVerCarrito");
+verCarritoBtn.addEventListener("click", () => BtnVerCarrito());
+
 
   // Restar cantidad de unidades de un producto
   let restar = document.querySelectorAll(".restar");
