@@ -38,13 +38,25 @@ const traerProductos = async () => {
     decrementar.addEventListener("click", () => {
       decrementarProducto(producto.id);
     });
-
     // Agrego evento al botón incrementar.
     const incrementar = document.getElementById(`incrementar-${producto.id}`);
     incrementar.addEventListener("click", () => {
       incrementarProducto(producto.id);
     });
-  } catch (error) {
+
+    const decrementarProducto = (id) => {
+      const producto = carrito.find((prod) => prod.id === id);
+      if (producto.cantidad === 1) {
+        eliminarProducto(producto.id);
+      } else {
+        producto.cantidad--;
+      }
+    };  
+    const incrementarProducto = (id) => {
+      const producto = carrito.find((prod) => prod.id === id);
+      producto.cantidad++;
+    };
+} catch (error) {
     console.error(error);
   }
 };
@@ -56,20 +68,6 @@ localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-const decrementarProducto = (id) => {
-  const producto = carrito.find((prod) => prod.id === id);
-  if (producto.cantidad === 1) {
-    eliminarProducto(producto.id);
-  } else {
-    producto.cantidad--;
-  }
-};
-
-const incrementarProducto = (id) => {
-  const producto = carrito.find((prod) => prod.id === id);
-  producto.cantidad++;
-};
 
 // Método find para hallar un producto dentro de la colección
 function agregarCarrito(id) {
@@ -145,28 +143,17 @@ const itemsEnCarrito = () => {
     <thead>
       <tr>
         <th scope="col">${el.nombre}</th>
-        <button id="eliminar-${el.id}" class="elminar">Eliminar</button>
         <th scope="col">${el.precio}</th>
         <th scope="col">${el.cantidad}</th>
+        <button id="eliminar-${el.id}" class="elminar">Eliminar</button>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
   </table>
             `;
     miCarrito.appendChild(item);
-  });
-};
 
-const BtnVerCarrito = (ev) => {
-  ev.preventDefault();
-  carrito.length ? itemsEnCarrito() : carritoVacio();
-};
-
-// Agrego eventos al boton "Ver carrito"
-const verCarritoBtn = document.getElementById("BtnVerCarrito");
-verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
-
-// Restar cantidad de unidades de un producto
+    // Restar cantidad de unidades de un producto
 const eliminar = document.getElementById(`eliminar-${el.id}`);
 for (const boton of eliminar) {
   boton.addEventListener("click", (e) => {
@@ -192,4 +179,14 @@ then((result) => {
     carritoVacio.innerHTML =
       '<p class="empty"> No hay productos en el carrito </p>';
   }
-});
+});});
+};
+
+const BtnVerCarrito = (ev) => {
+  ev.preventDefault();
+  carrito.length ? itemsEnCarrito() : carritoVacio();
+};
+
+// Agrego eventos al boton "Ver carrito"
+const verCarritoBtn = document.getElementById("BtnVerCarrito");
+verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
