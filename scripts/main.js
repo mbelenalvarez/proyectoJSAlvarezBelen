@@ -43,20 +43,7 @@ const traerProductos = async () => {
     incrementar.addEventListener("click", () => {
       incrementarProducto(producto.id);
     });
-
-    const decrementarProducto = (id) => {
-      const producto = carrito.find((prod) => prod.id === id);
-      if (producto.cantidad === 1) {
-        eliminarProducto(producto.id);
-      } else {
-        producto.cantidad--;
-      }
-    };  
-    const incrementarProducto = (id) => {
-      const producto = carrito.find((prod) => prod.id === id);
-      producto.cantidad++;
-    };
-} catch (error) {
+  } catch (error) {
     console.error(error);
   }
 };
@@ -66,6 +53,19 @@ traerProductos();
 
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
+
+const decrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  if (producto.cantidad === 1) {
+    eliminarProducto(producto.id);
+  } else {
+    producto.cantidad--;
+  }
+};
+const incrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  producto.cantidad++;
+};
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -153,33 +153,32 @@ const itemsEnCarrito = () => {
             `;
     miCarrito.appendChild(item);
 
-    // Restar cantidad de unidades de un producto
-const eliminar = document.getElementById(`eliminar-${el.id}`);
-for (const boton of eliminar) {
-  boton.addEventListener("click", (e) => {
-    const id = e.target.id.split("-")[1];
-    Swal.fire({
-      title: "¿Querés eliminar el producto de tu carrito",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Si, eliminalo",
+    // Eliminar productos del carrito
+    const eliminar = document.getElementById(`eliminar-${el.id}`);
+    eliminar.addEventListener("click", () => {
+      const id = el.id;
+      Swal.fire({
+        title: "¿Querés eliminar el producto de tu carrito",
+        showCancelButton: true,
+        confirmButtonColor: "#3085D6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminalo",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Eliminado", "El producto ha sido eliminado");
+          const productoABorrar = carrito.find((p) => p.id == id);
+          console.log(productoABorrar);
+          if (productoABorrar) {
+            const index = carrito.indexOf(productoABorrar);
+            carrito.splice(index, 1);
+          }
+        } else {
+          carritoVacio.innerHTML =
+            '<p class="empty"> No hay productos en el carrito </p>';
+        }
+      });
     });
   });
-}
-then((result) => {
-  if (result.isConfirmed) {
-    Swal.fire("Eliminado", "El producto ha sido eliminado");
-    const productoABorrar = carrito.find((p) => p.id == id);
-    if (productoABorrar) {
-      const index = carrito.indexOf(productoABorrar);
-      carrito.splice(index, 1);
-    }
-  } else {
-    carritoVacio.innerHTML =
-      '<p class="empty"> No hay productos en el carrito </p>';
-  }
-});});
 };
 
 const BtnVerCarrito = (ev) => {
