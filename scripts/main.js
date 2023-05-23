@@ -18,7 +18,9 @@ const traerProductos = async () => {
           <div class="card-body">
             <h4 class="card-title">${producto.nombre}</h4>
             <p class="card-text">${producto.descripción}</p>
+            <button id="decrementar-${producto.id}" class="button">-</button>
             <button id="${producto.id}" class="btn">Agregá al carrito</button>
+				    <button id="incrementar-${producto.id}" class="button">+</button>
           </div>
         </div>
       `;
@@ -31,8 +33,18 @@ const traerProductos = async () => {
         agregarCarrito(e.target.id);
       });
     });
-  }
-    catch (error) {
+    // Agrego evento al botón decrementar.
+    const decrementar = document.getElementById(`decrementar-${producto.id}`);
+    decrementar.addEventListener("click", () => {
+      decrementarProducto(producto.id);
+    });
+
+    // Agrego evento al botón incrementar.
+    const incrementar = document.getElementById(`incrementar-${producto.id}`);
+    incrementar.addEventListener("click", () => {
+      incrementarProducto(producto.id);
+    });
+  } catch (error) {
     console.error(error);
   }
 };
@@ -44,6 +56,20 @@ localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const decrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  if (producto.cantidad === 1) {
+    eliminarProducto(producto.id);
+  } else {
+    producto.cantidad--;
+  }
+};
+
+const incrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  producto.cantidad++;
+};
 
 // Método find para hallar un producto dentro de la colección
 function agregarCarrito(id) {
@@ -119,7 +145,7 @@ const itemsEnCarrito = () => {
     <thead>
       <tr>
         <th scope="col">${el.nombre}</th>
-        <button id="restar-${el.id}" class="restar">➖</button>
+        <button id="eliminar-${el.id}" class="elminar">Eliminar</button>
         <th scope="col">${el.precio}</th>
         <th scope="col">${el.cantidad}</th>
       </tr>
@@ -132,39 +158,38 @@ const itemsEnCarrito = () => {
 };
 
 const BtnVerCarrito = (ev) => {
- ev.preventDefault(); 
- carrito.length ? itemsEnCarrito() : carritoVacio();
+  ev.preventDefault();
+  carrito.length ? itemsEnCarrito() : carritoVacio();
 };
 
 // Agrego eventos al boton "Ver carrito"
 const verCarritoBtn = document.getElementById("BtnVerCarrito");
 verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
 
-
 // Restar cantidad de unidades de un producto
-  let restar = document.querySelectorAll(".restar");
-  for (const boton of restar) {
-    boton.addEventListener("click", (e) => {
-      const id = e.target.id.split("-")[1];
-      Swal.fire({
-        title: "¿Querés eliminar el producto de tu carrito",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, eliminalo",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Eliminado", "El producto ha sido eliminado");
-          const productoABorrar = carrito.find (p => p.id == id);
-          if (productoABorrar) {const index = carrito.indexOf (productoABorrar)
-          carrito.splice (index, 1)
-        }} else {
-          Swal.fire({
-            icon: 'error',
-            text: 'El producto no existe en el carrito',
-          })
-        }
-      });
+const eliminar = document.getElementById(`eliminar-${el.id}`);
+for (const boton of eliminar) {
+  boton.addEventListener("click", (e) => {
+    const id = e.target.id.split("-")[1];
+    Swal.fire({
+      title: "¿Querés eliminar el producto de tu carrito",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminalo",
     });
+  });
+}
+then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire("Eliminado", "El producto ha sido eliminado");
+    const productoABorrar = carrito.find((p) => p.id == id);
+    if (productoABorrar) {
+      const index = carrito.indexOf(productoABorrar);
+      carrito.splice(index, 1);
+    }
+  } else {
+    carritoVacio.innerHTML =
+      '<p class="empty"> No hay productos en el carrito </p>';
   }
-
+});
