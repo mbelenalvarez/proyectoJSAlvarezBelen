@@ -91,12 +91,12 @@ const itemsEnCarrito = () => {
     <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">${el.nombre}</th>
-        <th scope="col">${el.precio}</th>
-        <button id="decrementar-${el.id}" style= "display:flex" class="button">➖</button>
-        <th scope="col">${el.cantidad}</th>
-        <button id="incrementar-${el.id}" class="button">➕</button>
-        <button id="eliminar-${el.id}" style= "display:flex" class="elminar">❌</button>
+        <th scope="col">${nombre}</th>
+        <th scope="col">${precio}</th>
+        <button id="decrementar-${id}" style= "display:flex" class="button">➖</button>
+        <th scope="col">${cantidad}</th>
+        <button id="incrementar-${id}" class="button">➕</button>
+        <button id="eliminar-${id}" style= "display:flex" class="elminar">❌</button>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
@@ -118,9 +118,7 @@ const itemsEnCarrito = () => {
       localStorage.setItem("carrito", JSON.stringify(carrito));
       itemsEnCarrito();
     });
-  });
-
-  // Eliminar productos del carrito
+    // Eliminar productos del carrito
   const eliminar = document.getElementById(`eliminar-${el.id}`);
   eliminar.addEventListener("click", () => {
     const id = el.id;
@@ -147,7 +145,7 @@ const itemsEnCarrito = () => {
       }
     });
   });
-};
+});
 
 const decrementarProducto = (id) => {
   const producto = carrito.find((prod) => prod.id === id);
@@ -162,6 +160,8 @@ const incrementarProducto = (id) => {
   const producto = carrito.find((prod) => prod.id === id);
   producto.cantidad++;
 };
+};
+
 
 const BtnVerCarrito = (ev) => {
   ev.preventDefault();
