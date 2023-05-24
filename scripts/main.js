@@ -18,9 +18,9 @@ const traerProductos = async () => {
           <div class="card-body">
             <h4 class="card-title">${producto.nombre}</h4>
             <p class="card-text">${producto.descripción}</p>
-            <button id="decrementar-${producto.id}" class="button">-</button>
+            <button id="decrementar-${producto.id}" class="button">➖</button>
             <button id="${producto.id}" class="btn">Agregá al carrito</button>
-				    <button id="incrementar-${producto.id}" class="button">+</button>
+				    <button id="incrementar-${producto.id}" class="button">➕</button>
           </div>
         </div>
       `;
@@ -148,7 +148,7 @@ const itemsEnCarrito = () => {
         <th scope="col">${el.nombre}</th>
         <th scope="col">${el.precio}</th>
         <th scope="col">${el.cantidad}</th>
-        <button id="eliminar-${el.id}" class="elminar">Eliminar</button>
+        <button id="eliminar-${el.id}" class="elminar">❌</button>
       </tr>
     </thead>
     <tbody id="tableBody"></tbody>
@@ -192,3 +192,24 @@ const BtnVerCarrito = (ev) => {
 // Agrego eventos al boton "Ver carrito"
 const verCarritoBtn = document.getElementById("BtnVerCarrito");
 verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
+
+// Boton comprar   
+const botonComprar = document.createElement("div");
+botonComprar.className = "boton-pedido";
+botonComprar.innerHTML = `<button type="button" class="btn-comprar">Hacer pedido</button>`;
+miCarrito.append(botonComprar);
+
+const btnComprar = document.querySelector(".btn-comprar");
+btnComprar.addEventListener("click", () => {
+    if (carrito.length !== 0) {
+        Swal.fire({
+            title: 'Pedido recibido!',
+            text: 'Envíanos el comprobante de pago a mbelenalvarez@ufasta.edu.ar',
+            position: 'center',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: 'green',
+        });
+        carrito = [];
+    };
+});

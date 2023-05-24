@@ -297,6 +297,9 @@ form fieldset {
     .btn-carrito {
         @extend %botones;
     }
+    .btn-comprar {
+        @extend %botones;
+    }
 }
 
 /* media querie */

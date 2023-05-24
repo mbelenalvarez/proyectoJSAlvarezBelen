@@ -14,7 +14,7 @@ header a:hover,
   box-shadow: 1.5px 1.5px rgba(0, 0, 0, 0.77);
   justify-content: center;
 }
-.btnCarrito {
+.btnCarrito, .btn-comprar {
   background-color: #88ada4;
   color: beige;
   list-style: none;
