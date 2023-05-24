@@ -49,7 +49,12 @@ function agregarCarrito(id) {
   let productoBuscado = productos.find(
     (productos) => productos.id == parseInt(id)
   );
-  carrito.push(productoBuscado);
+
+  const objetoCarrito = {
+    ...productoBuscado
+  }
+  carrito.push(objetoCarrito);
+  
   localStorage.setItem("carrito", JSON.stringify(carrito));
   console.log(carrito);
   Toastify({
