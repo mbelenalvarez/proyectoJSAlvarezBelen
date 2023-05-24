@@ -108,11 +108,15 @@ const itemsEnCarrito = () => {
     const decrementar = document.getElementById(`decrementar-${el.id}`);
     decrementar.addEventListener("click", () => {
       decrementarProducto(el.id);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      itemsEnCarrito();
     });
     // Agrego evento al botón incrementar.
     const incrementar = document.getElementById(`incrementar-${el.id}`);
     incrementar.addEventListener("click", () => {
       incrementarProducto(el.id);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      itemsEnCarrito();
     });
   });
 
