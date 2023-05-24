@@ -24,7 +24,19 @@ const traerProductos = async () => {
           </div>
         </div>
       `;
-    });
+
+
+        // Agrego evento al botón decrementar.
+        const decrementar = document.getElementById(`decrementar-${producto.id}`);
+        decrementar.addEventListener("click", () => {
+          decrementarProducto(producto.id);
+        });
+        // Agrego evento al botón incrementar.
+        const incrementar = document.getElementById(`incrementar-${producto.id}`);
+        incrementar.addEventListener("click", () => {
+          incrementarProducto(producto.id);
+        });
+      });
 
     // Botón agregar al carrito
     const boton = document.querySelectorAll(`.btn`);
@@ -32,16 +44,6 @@ const traerProductos = async () => {
       P.addEventListener("click", (e) => {
         agregarCarrito(e.target.id);
       });
-    });
-    // Agrego evento al botón decrementar.
-    const decrementar = document.getElementById(`decrementar-${producto.id}`);
-    decrementar.addEventListener("click", () => {
-      decrementarProducto(producto.id);
-    });
-    // Agrego evento al botón incrementar.
-    const incrementar = document.getElementById(`incrementar-${producto.id}`);
-    incrementar.addEventListener("click", () => {
-      incrementarProducto(producto.id);
     });
   } catch (error) {
     console.error(error);
@@ -54,6 +56,8 @@ traerProductos();
 localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
 const decrementarProducto = (id) => {
   const producto = carrito.find((prod) => prod.id === id);
   if (producto.cantidad === 1) {
@@ -62,12 +66,11 @@ const decrementarProducto = (id) => {
     producto.cantidad--;
   }
 };
+
 const incrementarProducto = (id) => {
   const producto = carrito.find((prod) => prod.id === id);
   producto.cantidad++;
 };
-
-const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 // Método find para hallar un producto dentro de la colección
 function agregarCarrito(id) {
