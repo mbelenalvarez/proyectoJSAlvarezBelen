@@ -203,14 +203,10 @@ function costoTotal(productos) {
   return total;
 }
 
-// Boton comprar
-const botonComprar = document.createElement("div");
-botonComprar.className = "boton-pedido";
-botonComprar.innerHTML = `<button type="button" class="btn-comprar">Hacer pedido</button>`;
-miCarrito.append(botonComprar);
-
+// Boton Hacer Pedido
+const botonPedido = document.getElementById("botonPedido");
 const btnComprar = document.querySelector(".btn-comprar");
-btnComprar.addEventListener("click", () => {
+botonPedido.addEventListener("click", () => {
   if (carrito.length !== 0) {
     Swal.fire({
       title: "Pedido recibido!",
