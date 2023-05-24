@@ -18,31 +18,17 @@ const traerProductos = async () => {
           <div class="card-body">
             <h4 class="card-title">${producto.nombre}</h4>
             <p class="card-text">${producto.descripción}</p>
-            <button id="decrementar-${producto.id}" class="button">➖</button>
             <button id="${producto.id}" class="btn">Agregá al carrito</button>
-				    <button id="incrementar-${producto.id}" class="button">➕</button>
           </div>
         </div>
       `;
 
-
-        // Agrego evento al botón decrementar.
-        const decrementar = document.getElementById(`decrementar-${producto.id}`);
-        decrementar.addEventListener("click", () => {
-          decrementarProducto(producto.id);
+      // Botón agregar al carrito
+      const boton = document.querySelectorAll(`.btn`);
+      boton.forEach((P) => {
+        P.addEventListener("click", (e) => {
+          agregarCarrito(e.target.id);
         });
-        // Agrego evento al botón incrementar.
-        const incrementar = document.getElementById(`incrementar-${producto.id}`);
-        incrementar.addEventListener("click", () => {
-          incrementarProducto(producto.id);
-        });
-      });
-
-    // Botón agregar al carrito
-    const boton = document.querySelectorAll(`.btn`);
-    boton.forEach((P) => {
-      P.addEventListener("click", (e) => {
-        agregarCarrito(e.target.id);
       });
     });
   } catch (error) {
@@ -57,20 +43,6 @@ localStorage.setItem("productos", JSON.stringify(productos));
 let misProductos = JSON.parse(localStorage.getItem("productos"));
 
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-const decrementarProducto = (id) => {
-  const producto = carrito.find((prod) => prod.id === id);
-  if (producto.cantidad === 1) {
-    eliminarProducto(producto.id);
-  } else {
-    producto.cantidad--;
-  }
-};
-
-const incrementarProducto = (id) => {
-  const producto = carrito.find((prod) => prod.id === id);
-  producto.cantidad++;
-};
 
 // Método find para hallar un producto dentro de la colección
 function agregarCarrito(id) {
@@ -101,6 +73,101 @@ const orden = () => {
   return message;
 };
 
+// Tabla de miCarrito
+const miCarrito = document.getElementById("miCarrito");
+const carritoVacio = () => {
+  miCarrito.innerHTML = ``;
+  let sign = document.createElement("h3");
+  sign.innerHTML = `No hay elementos en el carrito`;
+  miCarrito.appendChild(sign);
+};
+
+const itemsEnCarrito = () => {
+  miCarrito.innerHTML = ``;
+  carrito.forEach((el) => {
+    const { nombre, precio, cantidad, id } = el;
+    let item = document.createElement("div");
+    item.innerHTML = `
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">${el.nombre}</th>
+        <th scope="col">${el.precio}</th>
+        <button id="decrementar-${el.id}" style= "display:flex" class="button">➖</button>
+        <th scope="col">${el.cantidad}</th>
+        <button id="incrementar-${el.id}" class="button">➕</button>
+        <button id="eliminar-${el.id}" style= "display:flex" class="elminar">❌</button>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+            `;
+    miCarrito.appendChild(item);
+
+    // Agrego evento al botón decrementar.
+    const decrementar = document.getElementById(`decrementar-${el.id}`);
+    decrementar.addEventListener("click", () => {
+      decrementarProducto(el.id);
+    });
+    // Agrego evento al botón incrementar.
+    const incrementar = document.getElementById(`incrementar-${el.id}`);
+    incrementar.addEventListener("click", () => {
+      incrementarProducto(el.id);
+    });
+  });
+
+  // Eliminar productos del carrito
+  const eliminar = document.getElementById(`eliminar-${el.id}`);
+  eliminar.addEventListener("click", () => {
+    const id = el.id;
+    Swal.fire({
+      title: "¿Querés eliminar el producto de tu carrito",
+      showCancelButton: true,
+      confirmButtonColor: "#3085D6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminalo",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Eliminado", "El producto ha sido eliminado");
+        const productoABorrar = carrito.find((p) => p.id == id);
+        console.log(productoABorrar);
+        if (productoABorrar) {
+          const index = carrito.indexOf(productoABorrar);
+          carrito.splice(index, 1);
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          itemsEnCarrito();
+        }
+      } else {
+        carritoVacio.innerHTML =
+          '<p class="empty"> No hay productos en el carrito </p>';
+      }
+    });
+  });
+};
+
+const decrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  if (producto.cantidad === 1) {
+    eliminarProducto(producto.id);
+  } else {
+    producto.cantidad--;
+  }
+};
+
+const incrementarProducto = (id) => {
+  const producto = carrito.find((prod) => prod.id === id);
+  producto.cantidad++;
+};
+
+const BtnVerCarrito = (ev) => {
+  ev.preventDefault();
+  carrito.length ? itemsEnCarrito() : carritoVacio();
+};
+
+// Agrego eventos al boton "Ver carrito"
+const verCarritoBtn = document.getElementById("BtnVerCarrito");
+verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
+
 //Empleo de descuento por compra de más de 2 productos
 function calcularDescuento(cantidadProductos, precio) {
   if (cantidadProductos >= 2) {
@@ -127,73 +194,7 @@ function costoTotal(productos) {
   return total;
 }
 
-// Tabla de miCarrito
-const miCarrito = document.getElementById("miCarrito");
-const carritoVacio = () => {
-  miCarrito.innerHTML = ``;
-  let sign = document.createElement("h3");
-  sign.innerHTML = `No hay elementos en el carrito`;
-  miCarrito.appendChild(sign);
-};
-
-const itemsEnCarrito = () => {
-  miCarrito.innerHTML = ``;
-  carrito.forEach((el) => {
-    const { nombre, precio, cantidad } = el;
-    let item = document.createElement("div");
-    item.innerHTML = `
-    <table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">${el.nombre}</th>
-        <th scope="col">${el.precio}</th>
-        <th scope="col">${el.cantidad}</th>
-        <button id="eliminar-${el.id}" class="elminar">❌</button>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
-            `;
-    miCarrito.appendChild(item);
-
-    // Eliminar productos del carrito
-    const eliminar = document.getElementById(`eliminar-${el.id}`);
-    eliminar.addEventListener("click", () => {
-      const id = el.id;
-      Swal.fire({
-        title: "¿Querés eliminar el producto de tu carrito",
-        showCancelButton: true,
-        confirmButtonColor: "#3085D6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Si, eliminalo",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire("Eliminado", "El producto ha sido eliminado");
-          const productoABorrar = carrito.find((p) => p.id == id);
-          console.log(productoABorrar);
-          if (productoABorrar) {
-            const index = carrito.indexOf(productoABorrar);
-            carrito.splice(index, 1);
-          }
-        } else {
-          carritoVacio.innerHTML =
-            '<p class="empty"> No hay productos en el carrito </p>';
-        }
-      });
-    });
-  });
-};
-
-const BtnVerCarrito = (ev) => {
-  ev.preventDefault();
-  carrito.length ? itemsEnCarrito() : carritoVacio();
-};
-
-// Agrego eventos al boton "Ver carrito"
-const verCarritoBtn = document.getElementById("BtnVerCarrito");
-verCarritoBtn.addEventListener("click", (ev) => BtnVerCarrito(ev));
-
-// Boton comprar   
+// Boton comprar
 const botonComprar = document.createElement("div");
 botonComprar.className = "boton-pedido";
 botonComprar.innerHTML = `<button type="button" class="btn-comprar">Hacer pedido</button>`;
@@ -201,15 +202,15 @@ miCarrito.append(botonComprar);
 
 const btnComprar = document.querySelector(".btn-comprar");
 btnComprar.addEventListener("click", () => {
-    if (carrito.length !== 0) {
-        Swal.fire({
-            title: 'Pedido recibido!',
-            text: 'Envíanos el comprobante de pago a mbelenalvarez@ufasta.edu.ar',
-            position: 'center',
-            icon: 'success',
-            confirmButtonText: 'Aceptar',
-            confirmButtonColor: 'green',
-        });
-        carrito = [];
-    };
+  if (carrito.length !== 0) {
+    Swal.fire({
+      title: "Pedido recibido!",
+      text: "Envíanos el comprobante de pago a mbelenalvarez@ufasta.edu.ar",
+      position: "center",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "green",
+    });
+    carrito = [];
+  }
 });
