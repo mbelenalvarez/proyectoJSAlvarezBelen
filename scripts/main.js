@@ -93,14 +93,14 @@ const itemsEnCarrito = () => {
     const { nombre, precio, cantidad, id } = el;
     let item = document.createElement("div");
     item.innerHTML = `
-    <table class="table table-striped">
+    <table class="tablaCompra table-striped">
     <thead>
       <tr>
-        <th scope="col">${nombre}</th>
-        <th scope="col">${precio}</th>
-        <button id="decrementar-${id}" style= "display:flex" class="button">➖</button>
-        <th scope="col">${cantidad}</th>
-        <button id="incrementar-${id}" class="button">➕</button>
+        <th scope="col" style= "display:flex" class="nombre">${nombre}</th>
+        <th scope="col" style= "display:flex" class="precio">${precio}</th>
+        <button id="decrementar-${id}" style= "display:flex" class="decrementar">➖</button>
+        <th scope="col" class="cantidad" style= "display:flex">${cantidad}</th>
+        <button id="incrementar-${id}" class="incrementar style= "display:flex"">➕</button>
         <button id="eliminar-${id}" style= "display:flex" class="elminar">❌</button>
       </tr>
     </thead>

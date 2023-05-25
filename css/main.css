@@ -548,3 +548,34 @@ form fieldset textarea {
     margin-right: 2rem;
   }
 }
+
+/* Botones JS */
+.tablaCompra {
+  display:grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1fr 0.5fr 0,5fr;
+  grid-template-areas: "nomnbre nombre" "precio precio" "decrementar decrementar" "cantidad cantidad" "incrementar incrementar" "eliminar eliminar";
+  justify-content: end;
+}
+
+.tablaCompra .nombre {
+  grid-area: nombre;
+}
+.tablaCompra .decrementar {
+  grid-area: precio;
+}
+.tablaCompra .decrementar {
+  grid-area: decrementar;
+}
+
+.tablaCompra .cantidad {
+  grid-area: cantidad;
+}
+
+.tablaCompra .incrementar {
+  grid-area: incrementar;
+}
+
+.tablaCompra .eliminar {
+  grid-area: eliminar;
+}
