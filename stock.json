@@ -4,7 +4,7 @@
       "img": "../multimedia/noticia.png",
       "nombre": "Creación de noticias",
       "descripción": "Redacción de contenido periodístico",
-      "cantidad": 10,
+      "cantidad": 1,
       "precio": 10000
     },
     {
@@ -12,7 +12,7 @@
       "img": "../multimedia/diseño.png",
       "nombre": "Diseño de páginas",
       "descripción": "Boceto e implementación de páginas web o UX/UI",
-      "cantidad": 5,
+      "cantidad": 1,
       "precio": 5000
     },
     {
@@ -20,7 +20,7 @@
       "img": "../multimedia/copy.png",
       "nombre": "Copywriting",
       "descripción": "Escritura de contenido para tus redes sociales",
-      "cantidad": 10,
+      "cantidad": 1,
       "precio": 5000
     }
   ]

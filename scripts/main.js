@@ -216,6 +216,5 @@ botonPedido.addEventListener("click", () => {
       confirmButtonText: "Aceptar",
       confirmButtonColor: "green",
     });
-    carrito = [];
   }
 });
