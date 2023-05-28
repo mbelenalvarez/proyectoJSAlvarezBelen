@@ -88,26 +88,34 @@ const carritoVacio = () => {
 };
 
 const itemsEnCarrito = () => {
-  miCarrito.innerHTML = ``;
+  miCarrito.innerHTML = `
+  
+  <table class="tablaCompra table-striped">
+  <thead>
+    <tr>
+      <th scope="col" class="nombre"> nombre </th>
+      <th scope="col" class="precio"> precio </th>
+      <th scope="col" class="cantidad"> cantidad </th>
+    </tr>
+  </thead>
+  <tbody id="tableBody"></tbody>
+</table>
+
+  `;
+
+  const  tableBody = document.getElementById ("tableBody")
   carrito.forEach((el) => {
     const { nombre, precio, cantidad, id } = el;
-    let item = document.createElement("div");
-    item.innerHTML = `
-    <table class="tablaCompra table-striped">
-    <thead>
-      <tr>
-        <th scope="col" style= "display:flex" class="nombre">${nombre}</th>
-        <th scope="col" style= "display:flex" class="precio">${precio}</th>
-        <button id="decrementar-${id}" style= "display:flex" class="decrementar">➖</button>
-        <th scope="col" class="cantidad" style= "display:flex">${cantidad}</th>
-        <button id="incrementar-${id}" class="incrementar style= "display:flex"">➕</button>
-        <button id="eliminar-${id}" style= "display:flex" class="elminar">❌</button>
-      </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-  </table>
+    let fila = document.createElement("tr");
+    fila.innerHTML = `
+        <td scope="col" class="nombre">${nombre}</td>
+        <td scope="col" class="precio">${precio}</td>
+        <td scope="col" class="cantidad" style= "display:flex">${cantidad}
+        <button id="decrementar-${id}" class="decrementar">➖</button>
+        <button id="incrementar-${id}" class="incrementar">➕</button>
+        <button id="eliminar-${id}" class="elminar">❌</button> </td>
             `;
-    miCarrito.appendChild(item);
+    tableBody.appendChild(fila);
 
     // Agrego evento al botón decrementar.
     const decrementar = document.getElementById(`decrementar-${el.id}`);

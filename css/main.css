@@ -554,8 +554,8 @@ form fieldset textarea {
   display:grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr 0.5fr 1fr 0.5fr 0,5fr;
-  grid-template-areas: "nomnbre nombre" "precio precio" "decrementar decrementar" "cantidad cantidad" "incrementar incrementar" "eliminar eliminar";
-  justify-content: end;
+  grid-template-areas: "nombre nombre" "precio precio" "decrementar decrementar" "cantidad cantidad" "incrementar incrementar" "eliminar eliminar";
+  justify-content: space-evenly;
   align-items: center;
   justify-items: center;
   padding: 0.2rem;
